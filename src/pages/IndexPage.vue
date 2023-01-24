@@ -2,10 +2,10 @@
   <q-page class="row bg-grey">
     <q-page-sticky position="right" :offset="[30, 30]">
       <SideBar></SideBar>
-      <pre> {{todos}}</pre>
+
     </q-page-sticky>
 
-
+    <pre> {{todos}}</pre>
   </q-page>
 </template>
 
