@@ -1,8 +1,6 @@
 <template>
   <q-page class="row bg-grey">
-    <q-page-sticky position="right" :offset="[30, 30]">
-      <SideBar></SideBar>
-    </q-page-sticky>
+    <SideBar></SideBar>
     <div>Welcome to statistics</div>
   </q-page>
 </template>

@@ -1,9 +1,12 @@
 <template>
-  <q-page class="row bg-grey">
-    <q-page-sticky position="right" :offset="[30, 30]">
-      <SideBar></SideBar>
-    </q-page-sticky>
-    <div>Welcome to settings</div>
+  <q-page class="row justify-between items-center bg-grey">
+    <div>
+      <div>Welcome to settings</div>
+    </div>
+
+    <SideBar></SideBar>
+
+
   </q-page>
 </template>
 
