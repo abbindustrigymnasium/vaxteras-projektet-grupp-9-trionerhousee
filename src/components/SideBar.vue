@@ -39,7 +39,7 @@ import { useRouter } from 'vue-router'
 
 let temp = ref('54')
 let luft = ref('64')
-let jord = ref('60')
+let jord = ref('8')
 
 
 
