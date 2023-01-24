@@ -57,7 +57,7 @@ function gotoStatistics () {
 <style>
 .box {
   width: 350px;
-  height: calc(8vh);
+  height: 80vh;
   border-radius: 15px 15px 15px 15px;
 }
 </style>
