@@ -1,7 +1,13 @@
 <template>
   <q-page class="row bg-grey">
     <SideBar></SideBar>
-    <pre> {{ todos }}</pre>
+    <div class="BoxWithBoxIn bg-red column flex justify-center items-center justify-around">
+      <div class="Abox bg-pink"></div>
+      <div class="Abox bg-yellow"></div>
+      <div class="Abox bg-pink"></div>
+    </div>
+
+
   </q-page>
 </template>
 
@@ -13,7 +19,19 @@ import { useDatabaseList } from 'vuefire'
 import { ref as dbref } from 'firebase/database'
 
 
-const todos = useDatabaseList(dbref(db, 'todos'))
-console.log(todos)
-console.log('aaaa')
 </script>
+
+<style>
+.BoxWithBoxIn {
+  margin-left: 5%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 145vh;
+  height: 200vh;
+}
+
+.Abox {
+  width: 130vh;
+  height: 60vh;
+}
+</style>

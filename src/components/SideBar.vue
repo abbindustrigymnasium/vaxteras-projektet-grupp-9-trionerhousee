@@ -39,7 +39,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-let temp = ref('54')
+let temp = ref('55')
 let luft = ref('64')
 let jord = ref('8')
 
@@ -56,7 +56,7 @@ function gotoStatistics () {
 
 <style>
 .box {
-  width: 350px;
+  width: 40vh;
   height: 80vh;
   border-radius: 15px 15px 15px 15px;
 }
