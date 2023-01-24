@@ -37,7 +37,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-let temp = ref('54')
+let temp = ref('55')
 let luft = ref('64')
 let jord = ref('8')
 
