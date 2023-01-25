@@ -2,11 +2,24 @@
   <q-page class="row bg-grey">
     <SideBar></SideBar>
     <div class="BoxWithBoxIn bg-red column flex justify-center items-center justify-around">
-      <div class="Abox bg-pink flex row justify-end">
+      <div class="Abox bg-pink column justify-center">
+        <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
+          <h3 class="stateText">Luckan är</h3>
+          <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
+          <h1 class="stateText text-weight-bold" v-else>stängd</h1>
+
+          <h3 class="stateText">och kommer </h3>
+          <h3 class="stateText" v-if="lucka">stängas vid</h3>
+          <h3 class="stateText" v-else>öppnas vid</h3>
+          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueLucka - 1 }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-else> {{ valueLucka }}°C</h1>
+        </div>
+
 
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
-        <q-slider class="" v-model="value" :min="10" :max="50" :step="1" label color="light-green" />
+        <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
+          track-size="30px" thumb-size="60px" />
 
       </div>
       <div class="Abox bg-yellow">
@@ -28,7 +41,12 @@ import { db } from 'src/boot/firebase'
 import { useDatabaseList } from 'vuefire'
 import { ref as dbref } from 'firebase/database'
 
-const value = ref(0)
+const valueLucka = ref(11)
+
+//Lucka!!
+const lucka = ref(true)
+
+
 
 </script>
 
@@ -49,5 +67,23 @@ const value = ref(0)
 .picture {
   width: 60vh;
   height: 40vh;
+}
+
+.stateText {
+  margin: 0px;
+  padding: 010px;
+
+
+
+}
+
+.boxforstatus {
+  height: 53vh;
+  width: 40vh;
+}
+
+.slider {
+  width: 60vh;
+
 }
 </style>
