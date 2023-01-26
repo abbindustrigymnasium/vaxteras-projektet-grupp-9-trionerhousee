@@ -44,23 +44,6 @@
 
       </div>
       <div class="Abox bg-green column justify-center">
-        <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
-          <h4 class="stateText">Bevattningen är</h4>
-          <h1 class="stateText text-weight-bold" v-if="lucka">PÅ</h1>
-          <h1 class="stateText text-weight-bold" v-else>AV</h1>
-
-          <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="lucka">stängas vid</h3>
-          <h3 class="stateText" v-else>öppnas vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueLucka - 1 }}%RH</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ valueLucka }}%RH</h1>
-        </div>
-
-
-        <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
-
-        <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="100" :step="1" label color="light-green"
-          track-size="30px" thumb-size="60px" />
 
       </div>
     </div>
