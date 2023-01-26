@@ -1,12 +1,13 @@
 <template>
   <q-page-sticky position="right" :offset="[30, 30]">
     <div class="box flex bg-light-blue-7 column justify-center items-center justify-around text-white">
+
       <div class="column items-center " @click="gotoStatistics">
         <div class="text-h3">
           Temperatur
         </div>
         <div class="text-h1">
-          {{ Temp.$value }}°C
+          {{ liveData.LiveTemp }}°C
         </div>
       </div>
 
@@ -15,7 +16,7 @@
           Luftfuktighet
         </div>
         <div class="text-h1">
-          {{ luft.$value }}%
+          {{ liveData.LiveLuft }}%
         </div>
       </div>
 
@@ -24,10 +25,11 @@
           Jordfuktighet
         </div>
         <div class="text-h1">
-          {{ jord.$value }}%
+          {{ liveData.LiveJord }}%
         </div>
       </div>
     </div>
+
   </q-page-sticky>
 
 
@@ -43,9 +45,8 @@ import { useDatabaseList } from 'vuefire'
 import { useDatabaseObject } from 'vuefire'
 import { ref as dbref } from 'firebase/database'
 
-const jord = useDatabaseObject(dbref(db, 'LiveData/LiveJord'))
-const Temp = useDatabaseObject(dbref(db, 'LiveData/LiveTemp'))
-const luft = useDatabaseObject(dbref(db, 'LiveData/LiveLuft'))
+const liveData = useDatabaseObject(dbref(db, 'LiveData'))
+
 
 
 //const luft = useDatabaseObject(dbref(db, 'LiveData', 'LiveLuft'))
