@@ -6,7 +6,7 @@
           Temperatur
         </div>
         <div class="text-h1">
-          {{ temp }}°C
+          {{ Temp.$value }}°C
         </div>
       </div>
 
@@ -15,7 +15,7 @@
           Luftfuktighet
         </div>
         <div class="text-h1">
-          {{ luft }}%
+          {{ luft.$value }}%
         </div>
       </div>
 
@@ -24,7 +24,7 @@
           Jordfuktighet
         </div>
         <div class="text-h1">
-          {{ jord }}%
+          {{ jord.$value }}%
         </div>
       </div>
     </div>
@@ -38,11 +38,18 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { db } from 'src/boot/firebase'
+import { useDatabaseList } from 'vuefire'
+import { useDatabaseObject } from 'vuefire'
+import { ref as dbref } from 'firebase/database'
 
-let temp = ref('55')
-let luft = ref('64')
-let jord = ref('8')
+const jord = useDatabaseObject(dbref(db, 'LiveData/LiveJord'))
+const Temp = useDatabaseObject(dbref(db, 'LiveData/LiveTemp'))
+const luft = useDatabaseObject(dbref(db, 'LiveData/LiveLuft'))
 
+
+//const luft = useDatabaseObject(dbref(db, 'LiveData', 'LiveLuft'))
+//const jord = useDatabaseObject(dbref(db, 'LiveData', 'LiveJord'))
 
 
 const router = useRouter()
