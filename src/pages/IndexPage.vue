@@ -1,10 +1,12 @@
+
 <template>
-  <q-page class="row bg-grey">
+  <q-page class="background row" src="../../public/icons/Wall_of_Ivy_Leaves_1.jpg">
+
     <SideBar></SideBar>
-    <div class="BoxWithBoxIn bg-red column flex justify-center items-center justify-around">
-      <div class="Abox bg-pink column justify-center">
+    <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
+      <div class="Abox bg-light-blue-7 column justify-center">
         <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
-          <h3 class="stateText">Luckan är</h3>
+          <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
           <h1 class="stateText text-weight-bold" v-else>stängd</h1>
 
@@ -19,14 +21,14 @@
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
         <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
-          track-size="30px" thumb-size="60px" />
+          track-size="4vh" thumb-size="6vh" />
 
       </div>
-      <div class="Abox bg-yellow column justify-center">
+      <div class="Abox bg-light-blue-7 column justify-center">
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
         <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
-          track-size="30px" thumb-size="60px" />
+          track-size="4vh" thumb-size="6vh" />
         <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText">Fläkten är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">PÅ</h1>
@@ -43,7 +45,7 @@
 
 
       </div>
-      <div class="Abox bg-green column justify-center">
+      <div class="Abox bg-light-blue-7 column justify-center">
 
       </div>
     </div>
@@ -56,10 +58,12 @@
 import SideBar from "src/components/SideBar.vue"
 import { ref } from 'vue'
 import { db } from 'src/boot/firebase'
-import { useDatabaseList } from 'vuefire'
+import { useDatabaseObject } from 'vuefire'
 import { ref as dbref } from 'firebase/database'
 
 const valueLucka = ref(11)
+
+
 
 //Lucka!!
 const lucka = ref(true)
@@ -70,16 +74,17 @@ const lucka = ref(true)
 
 <style>
 .BoxWithBoxIn {
-  margin-left: 5%;
+  margin-left: 8vh;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 145vh;
+  width: 140vh;
   height: 200vh;
 }
 
 .Abox {
   width: 130vh;
   height: 60vh;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .picture {
@@ -103,5 +108,9 @@ const lucka = ref(true)
 .slider {
   width: 60vh;
 
+}
+
+.background {
+  background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
 }
 </style>
