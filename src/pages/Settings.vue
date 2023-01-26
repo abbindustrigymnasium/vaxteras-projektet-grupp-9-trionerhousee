@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row justify-between items-center bg-grey">
+  <q-page class="row bg-grey">
     <div>
       <div>Welcome to settings</div>
     </div>

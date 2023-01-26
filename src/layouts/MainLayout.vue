@@ -9,15 +9,15 @@
         <div class="row bg-light-blue-7 col-5 justify-between">
           <q-btn color="teal" @click="gotoStatistics">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/statisticsss.png">
-            <div class="q-mt-xs"> Statistics</div>
+            <div class="q-mt-xs"> Statistik</div>
           </q-btn>
           <q-btn color="teal" @click="gotoAboutUs">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/aboutusss.png">
-            <div class="q-mt-xs"> About Us</div>
+            <div class="q-mt-xs"> Om oss</div>
           </q-btn>
           <q-btn color="teal" @click="gotoSettings">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/Settingsss.png">
-            <div class="q-mt-xs"> Settings</div>
+            <div class="q-mt-xs"> inställningar</div>
           </q-btn>
         </div>
       </div>
