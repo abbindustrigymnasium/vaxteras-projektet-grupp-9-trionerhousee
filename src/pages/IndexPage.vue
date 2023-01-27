@@ -4,9 +4,9 @@
 
     <SideBar></SideBar>
     <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
-      <div class="Abox bg-light-blue-7 column justify-center
+      <div class="Abox bg-amber-1 column justify-center
       ">
-        <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
+        <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
           <h1 class="stateText text-weight-bold" v-else>stängd</h1>
@@ -28,7 +28,7 @@
           </q-btn>
         </div>
       </div>
-      <div class="Abox bg-light-blue-7 column justify-center">
+      <div class="Abox bg-amber-1 column justify-center">
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
         <div class="row justify-start">
@@ -38,7 +38,7 @@
             <img class="buttono" src="../../public/icons/Send_icon.png" />
           </q-btn>
         </div>
-        <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
+        <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText">Fläkten är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">PÅ</h1>
           <h1 class="stateText text-weight-bold" v-else>AV</h1>
@@ -54,7 +54,7 @@
 
 
       </div>
-      <div class="Abox bg-light-blue-7 column justify-center">
+      <div class="Abox bg-amber-1 column justify-center">
 
       </div>
     </div>

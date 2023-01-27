@@ -1,21 +1,21 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-light-blue-7 ">
+    <q-header elevated class="bg-amber-1 ">
       <div class="row justify-around q-ma-sm ">
 
 
         <img class="logo q-ml-md" src="../../public/icons/Trioner_housee.png" @click="gotoHome">
-        <div class="row bg-light-blue-7 col-5 justify-between">
-          <q-btn color="teal" @click="gotoStatistics">
+        <div class="row bg-amber-1 col-5 justify-between">
+          <q-btn color="light-green" @click="gotoStatistics">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/statisticsss.png">
             <div class="q-mt-xs"> Statistik</div>
           </q-btn>
-          <q-btn color="teal" @click="gotoAboutUs">
+          <q-btn color="light-green" @click="gotoAboutUs">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/aboutusss.png">
             <div class="q-mt-xs"> Om oss</div>
           </q-btn>
-          <q-btn color="teal" @click="gotoSettings">
+          <q-btn color="light-green" @click="gotoSettings">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/Settingsss.png">
             <div class="q-mt-xs"> inställningar</div>
           </q-btn>

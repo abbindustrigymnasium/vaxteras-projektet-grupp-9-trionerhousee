@@ -1,6 +1,6 @@
 <template>
   <q-page-sticky position="right" :offset="[30, 30]">
-    <div class="box flex bg-light-blue-7 column justify-center items-center justify-around text-white">
+    <div class="box flex bg-amber-1 column justify-center items-center justify-around text-black">
 
       <div class="column items-center " @click="gotoStatistics">
         <div class="text-h3">
