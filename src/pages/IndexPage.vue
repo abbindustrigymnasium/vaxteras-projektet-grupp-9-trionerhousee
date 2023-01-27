@@ -1,11 +1,10 @@
 
 <template>
-  <q-page class="background row" src="../../public/icons/Wall_of_Ivy_Leaves_1.jpg">
+  <q-page class="background row">
 
     <SideBar></SideBar>
     <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
-      <div class="Abox bg-amber-1 column justify-center
-      ">
+      <div class="Abox bg-amber-1 column justify-center">
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
@@ -24,30 +23,33 @@
           <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
             track-size="4vh" thumb-size="6vh" />
           <q-btn color="light-green" class="buttono q-ml-xl">
-            <img class="buttono" src="../../public/icons/Send_icon.png" />
+            <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider1" />
           </q-btn>
         </div>
       </div>
+
+
+
       <div class="Abox bg-amber-1 column justify-center">
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
         <div class="row justify-start">
-          <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
+          <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label color="light-green"
             track-size="4vh" thumb-size="6vh" />
           <q-btn color="light-green" class="buttono q-ml-xl">
-            <img class="buttono" src="../../public/icons/Send_icon.png" />
+            <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
           </q-btn>
         </div>
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText">Fläkten är</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka">PÅ</h1>
+          <h1 class="stateText text-weight-bold" v-if="flakt">PÅ</h1>
           <h1 class="stateText text-weight-bold" v-else>AV</h1>
 
           <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="lucka">stängas av vid</h3>
+          <h3 class="stateText" v-if="flakt">stängas av vid</h3>
           <h3 class="stateText" v-else>sättas på vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueLucka - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ valueLucka }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueFlakt - 1 }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-else> {{ valueFlakt }}°C</h1>
         </div>
 
 
@@ -68,14 +70,29 @@ import SideBar from "src/components/SideBar.vue"
 import { ref } from 'vue'
 import { db } from 'src/boot/firebase'
 import { useDatabaseObject } from 'vuefire'
-import { ref as dbref } from 'firebase/database'
+import { ref as dbref, set } from 'firebase/database'
+
+const liveData = useDatabaseObject(dbref(db, 'LiveData'))
+
+
+function uploadSlider1 () {
+
+  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka._value)
+
+}
+function uploadSlider2 () {
+
+  set(dbref(db, 'dataSettings/FlaktTempSetting'), valueFlakt._value)
+
+}
 
 const valueLucka = ref(11)
+const valueFlakt = ref(11)
 
 
 
-//Lucka!!
 const lucka = ref(true)
+const flakt = ref(true)
 
 
 

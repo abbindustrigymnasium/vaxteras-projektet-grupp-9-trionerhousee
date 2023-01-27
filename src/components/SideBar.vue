@@ -43,10 +43,19 @@ import { useRouter } from 'vue-router'
 import { db } from 'src/boot/firebase'
 import { useDatabaseList } from 'vuefire'
 import { useDatabaseObject } from 'vuefire'
-import { ref as dbref } from 'firebase/database'
+import { ref as dbref, set } from 'firebase/database'
 
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 
+
+function testtesttest () {
+  let newTodo = {
+    id: 4,
+    text: "hallå"
+  }
+  set(dbref(db, 'todos/4'), newTodo)
+
+}
 
 
 //const luft = useDatabaseObject(dbref(db, 'LiveData', 'LiveLuft'))
