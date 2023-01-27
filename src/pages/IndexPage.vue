@@ -4,7 +4,8 @@
 
     <SideBar></SideBar>
     <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
-      <div class="Abox bg-light-blue-7 column justify-center">
+      <div class="Abox bg-light-blue-7 column justify-center
+      ">
         <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
@@ -19,16 +20,24 @@
 
 
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
-
-        <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
-          track-size="4vh" thumb-size="6vh" />
-
+        <div class="row justify-start">
+          <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
+            track-size="4vh" thumb-size="6vh" />
+          <q-btn color="light-green" class="buttono q-ml-xl">
+            <img class="buttono" src="../../public/icons/Send_icon.png" />
+          </q-btn>
+        </div>
       </div>
       <div class="Abox bg-light-blue-7 column justify-center">
         <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
-        <q-slider class="slider q-mx-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
-          track-size="4vh" thumb-size="6vh" />
+        <div class="row justify-start">
+          <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
+            track-size="4vh" thumb-size="6vh" />
+          <q-btn color="light-green" class="buttono q-ml-xl">
+            <img class="buttono" src="../../public/icons/Send_icon.png" />
+          </q-btn>
+        </div>
         <div class="boxforstatus bg-blue column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText">Fläkten är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">PÅ</h1>
@@ -106,11 +115,17 @@ const lucka = ref(true)
 }
 
 .slider {
-  width: 60vh;
+  width: 45vh;
 
 }
 
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+}
+
+.buttono {
+
+  height: 7vh;
+  width: 7vh;
 }
 </style>
