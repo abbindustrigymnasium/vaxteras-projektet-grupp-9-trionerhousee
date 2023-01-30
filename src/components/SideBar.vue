@@ -43,7 +43,7 @@ import { useRouter } from 'vue-router'
 import { db } from 'src/boot/firebase'
 import { useDatabaseList } from 'vuefire'
 import { useDatabaseObject } from 'vuefire'
-import { ref as dbref } from 'firebase/database'
+import { ref as dbref, set } from 'firebase/database'
 
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 

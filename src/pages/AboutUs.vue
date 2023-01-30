@@ -1,7 +1,7 @@
 <template>
-  <q-page class="row bg-grey">
+  <q-page class="background row">
     <SideBar></SideBar>
-    <div>Welcome to AboutUs</div>
+    <div>Welcome to About Us</div>
   </q-page>
 </template>
 
@@ -9,3 +9,9 @@
 import SideBar from "src/components/SideBar.vue"
 
 </script>
+
+<style>
+.background {
+  background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+}
+</style>
