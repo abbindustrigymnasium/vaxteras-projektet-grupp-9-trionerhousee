@@ -67,7 +67,7 @@
 
 <script setup>
 import SideBar from "src/components/SideBar.vue"
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { db } from 'src/boot/firebase'
 import { useDatabaseObject } from 'vuefire'
 import { ref as dbref, set } from 'firebase/database'
@@ -75,9 +75,19 @@ import { ref as dbref, set } from 'firebase/database'
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 const dataSettings = useDatabaseObject(dbref(db, 'dataSettings'))
 
+
+
+const valueLucka = ref(0)
+const valueFlakt = ref(0)
+
+const lucka = ref(true)
+const flakt = ref(true)
+
+
+
 function uploadSlider1 () {
 
-  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka._value)
+  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka.value)
 
 }
 function uploadSlider2 () {
@@ -86,16 +96,23 @@ function uploadSlider2 () {
 
 }
 
-const valueLucka = ref(11)
-const valueFlakt = ref(11)
 
 
+watch(dataSettings, (val) => {
+  if (val != null) {
+    valueLucka.value = val.luckaTempSetting
+    valueFlakt.value = val.FlaktTempSetting
+  }
 
+})
 
+watch(liveData, (val2) => {
+  if (val2 != null) {
+    lucka.value = val2.GateOpen
+    flakt.value = val2.fanON
+  }
 
-const lucka = ref(true)
-const flakt = ref(true)
-
+})
 
 
 </script>
