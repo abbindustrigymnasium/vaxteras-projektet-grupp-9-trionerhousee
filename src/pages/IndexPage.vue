@@ -59,6 +59,12 @@
       </div>
     </div>
 
+    <div>
+      <input type="email" v-model="email" />
+      <input type="password" v-model="password" />
+      <button @click="googleSign"> sign in with google</button>
+    </div>
+
 
   </q-page>
 </template>
@@ -69,6 +75,11 @@ import { ref } from 'vue'
 import { db } from 'src/boot/firebase'
 import { useDatabaseObject } from 'vuefire'
 import { ref as dbref } from 'firebase/database'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+
+const provider = new firebase.auth.googleAuthProvider();
+firebase.auth().signInWithPopup(provider);
+
 
 const valueLucka = ref(11)
 
@@ -104,6 +115,7 @@ const lucka = ref(true)
 .stateText {
   margin: 0px;
   padding: 010px;
+
 
 
 
