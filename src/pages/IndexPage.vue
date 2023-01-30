@@ -31,16 +31,18 @@
 
 
       <div class="Abox bg-amber-1 column justify-center">
-        <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+        <div class="q-ml-xl">
+          <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
-        <div class="row justify-start">
-          <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label color="light-green"
-            track-size="4vh" thumb-size="6vh" />
-          <q-btn color="light-green" class="buttono q-ml-xl">
-            <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
-          </q-btn>
+          <div class="row justify-start">
+            <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label
+              color="light-green" track-size="4vh" thumb-size="6vh" />
+            <q-btn color="light-green" class="buttono q-ml-xl">
+              <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
+            </q-btn>
+          </div>
         </div>
-        <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
+        <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
           <h3 class="stateText">Fläkten är</h3>
           <h1 class="stateText text-weight-bold" v-if="flakt">PÅ</h1>
           <h1 class="stateText text-weight-bold" v-else>AV</h1>
@@ -57,6 +59,27 @@
 
       </div>
       <div class="Abox bg-amber-1 column justify-center">
+        <div class="boxforstatus column items-center q-ml-xl q-pa-lg">
+          <h1 class="stateText text-weight-bold">Regn</h1>
+          <h3 class="stateText">inställningar</h3>
+
+          <div class="boxButton column q-pa-md">
+            <q-btn color="light-green q-mb-sm">
+              <h4 class="q-ma-sm">ÖKEN</h4>
+            </q-btn>
+            <q-btn color="light-green q-mb-sm">
+              <h4 class="q-ma-sm">GRÄSMARK</h4>
+            </q-btn>
+            <q-btn color="light-green q-mb-sm">
+              <h4 class=" q-ma-sm">REGNSKOG</h4>
+            </q-btn>
+
+
+          </div>
+
+
+        </div>
+        <img class="picture2 q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
 
       </div>
     </div>
@@ -137,13 +160,17 @@ watch(liveData, (val2) => {
   height: 40vh;
 }
 
+.picture2 {
+  width: 70vh;
+  height: 50vh;
+}
+
 .stateText {
   margin: 0px;
   padding: 010px;
 
-
-
 }
+
 
 .boxforstatus {
   height: 53vh;
