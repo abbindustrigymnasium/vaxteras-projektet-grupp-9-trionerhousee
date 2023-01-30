@@ -1,6 +1,6 @@
 
 <template>
-  <q-page class="background row">
+  <q-page class="background row" v-if="liveData != null">
 
     <SideBar></SideBar>
     <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
@@ -13,8 +13,8 @@
           <h3 class="stateText">och kommer </h3>
           <h3 class="stateText" v-if="lucka">stängas vid</h3>
           <h3 class="stateText" v-else>öppnas vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueLucka - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ valueLucka }}C°</h1>
+          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ dataSettings.luckaTempSetting - 1 }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.luckaTempSetting }}C°</h1>
         </div>
 
 
@@ -48,8 +48,8 @@
           <h3 class="stateText">och kommer </h3>
           <h3 class="stateText" v-if="flakt">stängas av vid</h3>
           <h3 class="stateText" v-else>sättas på vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ valueFlakt - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ valueFlakt }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</h1>
+          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</h1>
         </div>
 
 
@@ -73,7 +73,7 @@ import { useDatabaseObject } from 'vuefire'
 import { ref as dbref, set } from 'firebase/database'
 
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
-
+const dataSettings = useDatabaseObject(dbref(db, 'dataSettings'))
 
 function uploadSlider1 () {
 
@@ -88,6 +88,8 @@ function uploadSlider2 () {
 
 const valueLucka = ref(11)
 const valueFlakt = ref(11)
+
+
 
 
 

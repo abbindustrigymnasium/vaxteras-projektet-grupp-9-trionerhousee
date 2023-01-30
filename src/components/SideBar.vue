@@ -48,15 +48,6 @@ import { ref as dbref, set } from 'firebase/database'
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 
 
-function testtesttest () {
-  let newTodo = {
-    id: 4,
-    text: "hallå"
-  }
-  set(dbref(db, 'todos/4'), newTodo)
-
-}
-
 
 //const luft = useDatabaseObject(dbref(db, 'LiveData', 'LiveLuft'))
 //const jord = useDatabaseObject(dbref(db, 'LiveData', 'LiveJord'))
