@@ -11,12 +11,16 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
+import { db } from 'src/boot/firebase'
+import { useDatabaseObject } from 'vuefire'
+import { ref as dbref, set } from 'firebase/database'
+
 import { Bar } from 'vue-chartjs'
 import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend
 } from 'chart.js'
-import { ref } from 'vue'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const chartData = ref({
@@ -29,6 +33,9 @@ const chartData = ref({
     }
   ]
 })
+
+const tempHum = useDatabaseObject(dbref(db, 'TempHum'))
+
 const chartOptions = ref({
   responsive: true,
   maintainAspectRatio: false
@@ -36,7 +43,15 @@ const chartOptions = ref({
 
 const date = ref('2023/01/01')
 
-//const dateArray = date._value.split("/")
+function hello () {
+  const year = ref(date._value.slice(0, 4))
+  const month = ref(date._value.slice(5, 7))
+  const day = ref(date._value.slice(8, 10))
+  console.log(year)
+  console.log(month)
+  console.log(day)
+  console.log(date)
+}
 
 </script>
 
