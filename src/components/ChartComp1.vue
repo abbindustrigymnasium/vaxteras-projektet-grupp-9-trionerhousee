@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-around">
-    <div class="boxPrison">
+    <div class="boxPrison" @click="hello">
       <Line :data="chartData" :options="chartOptions" />
     </div>
     <div class=" self-center">
@@ -36,9 +36,8 @@ const chartOptions = ref({
 
 const date = ref('2023/01/01')
 
-const dateArray = date.split("/")
+//const dateArray = date._value.split("/")
 
-console.log(dateArray)
 </script>
 
 <style>
