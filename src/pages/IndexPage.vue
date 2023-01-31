@@ -64,14 +64,20 @@
           <h3 class="stateText">inställningar</h3>
 
           <div class="boxButton column q-pa-md">
-            <q-btn color="light-green q-mb-sm">
-              <h4 class="q-ma-sm">ÖKEN</h4>
+            <q-btn color="light-green q-mb-sm" @click="okenUpload">
+              <h4 class="q-ma-sm q-px-xl">ÖKEN</h4>
+              <div class="statusBox bg-red" v-if="oken"></div>
+              <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm">
+            <q-btn color="light-green q-mb-sm" @click="grasmarkUpload">
               <h4 class="q-ma-sm">GRÄSMARK</h4>
+              <div class="statusBox bg-red" v-if="grasmark"></div>
+              <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm">
-              <h4 class=" q-ma-sm">REGNSKOG</h4>
+            <q-btn color="light-green q-mb-sm" @click="regnskogUpload">
+              <h4 class=" q-ma-sm q-pr-xs">REGNSKOG</h4>
+              <div class="statusBox bg-red" v-if="regnskog"></div>
+              <div class="statusBox" v-else></div>
             </q-btn>
 
 
@@ -105,8 +111,9 @@ const valueFlakt = ref(0)
 
 const lucka = ref(true)
 const flakt = ref(true)
-
-
+const oken = ref(false)
+const grasmark = ref(false)
+const regnskog = ref(false)
 
 function uploadSlider1 () {
 
@@ -118,6 +125,31 @@ function uploadSlider2 () {
   set(dbref(db, 'dataSettings/FlaktTempSetting'), valueFlakt._value)
 
 }
+
+function okenUpload () {
+
+  set(dbref(db, 'LiveData/oken'), true)
+  set(dbref(db, 'LiveData/grasmark'), false)
+  set(dbref(db, 'LiveData/regnskog'), false)
+
+}
+
+function grasmarkUpload () {
+
+  set(dbref(db, 'LiveData/oken'), false)
+  set(dbref(db, 'LiveData/grasmark'), true)
+  set(dbref(db, 'LiveData/regnskog'), false)
+
+}
+
+function regnskogUpload () {
+
+  set(dbref(db, 'LiveData/oken'), false)
+  set(dbref(db, 'LiveData/grasmark'), false)
+  set(dbref(db, 'LiveData/regnskog'), true)
+
+}
+
 
 
 
@@ -133,6 +165,9 @@ watch(liveData, (val2) => {
   if (val2 != null) {
     lucka.value = val2.GateOpen
     flakt.value = val2.fanON
+    oken.value = val2.oken
+    grasmark.value = val2.grasmark
+    regnskog.value = val2.regnskog
   }
 
 })
@@ -171,12 +206,6 @@ watch(liveData, (val2) => {
 
 }
 
-
-.boxforstatus {
-  height: 53vh;
-  width: 40vh;
-}
-
 .slider {
   width: 45vh;
 
@@ -190,5 +219,11 @@ watch(liveData, (val2) => {
 
   height: 7vh;
   width: 7vh;
+}
+
+.statusBox {
+  width: 4vh;
+  height: 4vh;
+  border-radius: 4px 4px 4px 4px;
 }
 </style>
