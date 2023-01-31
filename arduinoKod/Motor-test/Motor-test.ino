@@ -4,8 +4,8 @@ const byte MotorDir = 0;
 const byte FanSpeed = 4;
 const byte FanDir = 2;
 
-int pot = A0;
-int potval = 0;
+int pot = 90;
+int potval = 900;
 
 void setup() {
   // put your setup code here, to run once:
@@ -21,12 +21,15 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  potval = analogRead(pot);
+
   Serial.println(potval);
 
   digitalWrite(MotorDir, HIGH);
 
-  analogWrite(MotorSpeed, potval);
+  analogWrite(MotorSpeed, 900);
+
+  delay(5000);
+  analogWrite(MotorSpeed, 0);
 
 
 }
