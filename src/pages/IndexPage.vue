@@ -133,7 +133,7 @@ function uploadSlider1 () {
 }
 function uploadSlider2 () {
 
-  set(dbref(db, 'dataSettings/FlaktTempSetting'), valueFlakt._value)
+  set(dbref(db, 'dataSettings/FlaktTempSetting'), valueFlakt.value)
 
 }
 
