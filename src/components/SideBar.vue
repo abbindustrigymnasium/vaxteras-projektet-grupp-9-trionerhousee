@@ -1,7 +1,7 @@
 <template>
   <q-page-sticky v-if="liveData != null" position="right" :offset="[30, 30]">
     <div class="box flex bg-amber-1 column justify-center items-center justify-around text-black">
-
+      <div id="name"> {{name}}</div>
       <div class="column items-center " @click="gotoStatistics">
         <div class="text-h3">
           Temperatur
@@ -59,8 +59,12 @@ function gotoStatistics () {
   router.push("/Statistics")
 }
 
+const props = defineProps({
+  namely: String
+})
 
 </script>
+
 
 <style>
 .box {
