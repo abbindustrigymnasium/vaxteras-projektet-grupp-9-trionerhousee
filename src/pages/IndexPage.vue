@@ -1,10 +1,18 @@
 
 <template>
+
   <q-page class="background row" v-if="liveData != null">
 
+
     <SideBar></SideBar>
-    <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
+
+    <div class="BoxWithBoxIn flex justify-center items-center ">
+        <div>
+          <h1 id="welcomeUser">Welcome back{{name}}</h1>
+        </div>
       <div class="Abox bg-amber-1 column justify-center">
+
+
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
@@ -115,6 +123,20 @@ const oken = ref(false)
 const grasmark = ref(false)
 const regnskog = ref(false)
 
+let cookies = document.cookie
+
+console.log(cookies)
+
+
+let decodedCookie = decodeURIComponent(document.cookie)
+let ca = decodedCookie.split(';')
+
+  let name = ca[3].replace('name=', '')
+
+console.log(name);
+
+
+
 function uploadSlider1 () {
 
   set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka.value)
@@ -188,6 +210,7 @@ watch(liveData, (val2) => {
   width: 130vh;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
+  margin: 3vh;
 }
 
 .picture {
@@ -213,6 +236,7 @@ watch(liveData, (val2) => {
 
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+  background-attachment: fixed;
 }
 
 .buttono {
