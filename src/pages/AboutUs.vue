@@ -1,7 +1,53 @@
 <template>
   <q-page class="background row">
     <SideBar></SideBar>
-    <div>Welcome to About Us</div>
+
+    <div class="BoxWithBoxIn row flex items-top justify-between">
+      <div class="longBox q-ml-xl q-mt-lg bg-amber-1 row justify-center items-start">
+        <h1 class="text-weight-bold q-mt-xl">Vårt Team</h1>
+      </div>
+
+      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-mr-sm q-ml-lg">
+        <img class="faceImg q-mt-md" src="../../public/icons/sebastian.png" />
+        <div class="q-mt-md column items-center ">
+          <h3 class="nameText text-weight-bold">Sebastin Alin</h3>
+          <h5 class="nameText text-weight-bold">Mjukvaruingenjör</h5>
+          <h5 class="nameText text-weight-bold">Firebaseingenjör</h5>
+          <h5 class="nameText text-weight-bold">Photograf</h5>
+          <h5 class="nameText text-weight-bold">Arduinoingenjör</h5>
+
+
+
+        </div>
+      </div>
+      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-mx-sm">
+        <img class="faceImg q-mt-md" src="../../public/icons/axel.png" />
+        <div class="q-mt-md column items-center ">
+          <h3 class="nameText text-weight-bold">Axel Roxenborg</h3>
+          <h5 class="nameText text-weight-bold">CAD-Expert</h5>
+          <h5 class="nameText text-weight-bold">Arduinoingenjör</h5>
+          <h5 class="nameText text-weight-bold">3D-Print Expert</h5>
+          <h5 class="nameText text-weight-bold">Vattenpumpingenjör</h5>
+        </div>
+
+      </div>
+      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-ml-sm">
+        <img class="faceImg q-mt-md" src="../../public/icons/simon.png" />
+        <div class="q-mt-md column items-center ">
+          <h3 class="nameText text-weight-bold">Simon Meier</h3>
+
+          <h5 class="nameText text-weight-bold">Mjukvaruingenjör</h5>
+          <h5 class="nameText text-weight-bold">Webbdesigner</h5>
+          <h5 class="nameText text-weight-bold">Firebaseingenjör</h5>
+          <h5 class="nameText text-weight-bold">Paint.net "expert"</h5>
+        </div>
+        <div></div>
+
+      </div>
+
+
+    </div>
+
   </q-page>
 </template>
 
@@ -13,5 +59,37 @@ import SideBar from "src/components/SideBar.vue"
 <style>
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+}
+
+.BoxWithBoxIn {
+  margin-left: 8vh;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 140vh;
+  height: 60vh;
+}
+
+.Abox {
+  width: 40vh;
+  height: 50vh;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.faceImg {
+  width: 35vh;
+  height: 25vh;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.nameText {
+  margin: 0px;
+  padding: 0px;
+}
+
+.longBox {
+  width: 132vh;
+  height: 20vh;
+  border-radius: 100px 100px 100px 100px;
+
 }
 </style>
