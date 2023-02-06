@@ -90,6 +90,7 @@ import SideBar from "src/components/SideBar.vue"
   width: 132vh;
   height: 20vh;
   border-radius: 100px 100px 100px 100px;
+  box-shadow: 5px 5px 8px;
 
 }
 </style>
