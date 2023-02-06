@@ -188,6 +188,7 @@ watch(liveData, (val2) => {
   width: 130vh;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
+  box-shadow: 5px 5px 8px;
 }
 
 .picture {
