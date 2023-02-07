@@ -34,6 +34,7 @@ function alerthello () {
     console.log(user.uid)
     document.cookie = 'name='+name+'; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
     document.location.reload(true)
+    document.cookie = 'userUid=' + user.uid + '; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
 
     return {name};
 
@@ -123,7 +124,7 @@ input {
 
 }
 .header {
-  background-color: blue;
+  font-weight: bolder;
   margin: 1vh;
 
   border-radius: 30px;
