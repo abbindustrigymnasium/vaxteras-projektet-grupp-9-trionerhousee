@@ -30,6 +30,7 @@ import {
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend,)
 
 const graph = useDatabaseObject(dbref(db, 'TempHum'))
+const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 const users = useDatabaseObject(dbref(db, 'users'))
 
 
@@ -39,6 +40,30 @@ const date = ref('2023/02/01')
 const year = ref(date._value.slice(0, 4))
 const month = ref(date._value.slice(5, 7))
 const day = ref(date._value.slice(8, 10))
+
+const hour1 = ref(1)
+const hour2 = ref(1)
+const hour3 = ref(1)
+const hour4 = ref(1)
+const hour5 = ref(1)
+const hour6 = ref(1)
+const hour7 = ref(1)
+const hour8 = ref(1)
+const hour9 = ref(1)
+const hour10 = ref(1)
+const hour11 = ref(1)
+const hour12 = ref(1)
+const hour13 = ref(1)
+const hour14 = ref(1)
+const hour15 = ref(1)
+const hour16 = ref(1)
+const hour17 = ref(1)
+const hour18 = ref(1)
+const hour19 = ref(1)
+const hour20 = ref(1)
+const hour21 = ref(1)
+const hour22 = ref(1)
+const hour23 = ref(1)
 
 if (day.value < 10) {
   day.value = ref(day._value.slice(1, 2))
@@ -98,136 +123,142 @@ function kalleUpdate () {
 
   //const fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value + '/days' + day.value.value))
   if (fireTest._rawValue.Hour1 == null) {
-    const hour1 = 1
+    hour1.value = 1
   }
   else {
-    const hour1 = ref(fireTest._rawValue.Hour1.Minute1.EarthHumidity)
+    hour1.value = ref(fireTest._rawValue.Hour1.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour2 == null) {
-    const hour2 = 1
+    hour2.value = 1
   }
   else {
-    const hour2 = ref(fireTest._rawValue.Hour2.Minute1.EarthHumidity)
+    hour2.value = ref(fireTest._rawValue.Hour2.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour3 == null) {
-    const hour3 = 1
+    hour3.value = 1
   }
   else {
-    const hour3 = ref(fireTest._rawValue.Hour3.Minute1.EarthHumidity)
+    hour3.value = ref(fireTest._rawValue.Hour3.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour4 == null) {
-    const hour4 = 1
+    hour4.value = 1
   }
   else {
-    const hour4 = ref(fireTest._rawValue.Hour4.Minute1.EarthHumidity)
+    hour4.value = ref(fireTest._rawValue.Hour4.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour5 == null) {
-    const hour5 = 1
+    hour5.value = 1
   }
   else {
-    const hour5 = ref(fireTest._rawValue.Hour5.Minute1.EarthHumidity)
+    hour5.value = ref(fireTest._rawValue.Hour5.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour6 == null) {
-    const hour6 = 1
+    hour6.value = 1
   }
   else {
-    const hour6 = ref(fireTest._rawValue.Hour6.Minute1.EarthHumidity)
+    hour6.value = ref(fireTest._rawValue.Hour6.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour7 == null) {
-    const hour7 = 1
+    hour7.value = 1
   }
   else {
-    const hour7 = ref(fireTest._rawValue.Hour7.Minute1.EarthHumidity)
+    hour7.value = ref(fireTest._rawValue.Hour7.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour8 == null) {
-    const hour8 = 1
+    hour8.value = 1
   }
   else {
-    const hour8 = ref(fireTest._rawValue.Hour8.Minute1.EarthHumidity)
+    hour8.value = ref(fireTest._rawValue.Hour8.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour9 == null) {
-    const hour9 = 1
+    hour9.value = 1
   }
   else {
-    const hour9 = ref(fireTest._rawValue.Hour9.Minute1.EarthHumidity)
+    hour9.value = ref(fireTest._rawValue.Hour9.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour10 == null) {
-    const hour10 = 1
+    hour10.value = 1
   }
   else {
-    const hour10 = ref(fireTest._rawValue.Hour10.Minute1.EarthHumidity)
+    hour10.value = ref(fireTest._rawValue.Hour10.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour11 == null) {
-    const hour11 = 1
+    hour11.value = 1
   }
   else {
-    const hour11 = ref(fireTest._rawValue.Hour11.Minute1.EarthHumidity)
+    hour11.value = ref(fireTest._rawValue.Hour11.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour12 == null) {
-    const hour12 = 1
+    hour12.value = 1
   }
   else {
-    const hour12 = ref(fireTest._rawValue.Hour12.Minute1.EarthHumidity)
+    hour12.value = ref(fireTest._rawValue.Hour12.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour13 == null) {
-    const hour13 = 1
+    hour13.value = 1
   }
   else {
-    const hour13 = ref(fireTest._rawValue.Hour13.Minute1.EarthHumidity)
+    hour13.value = ref(fireTest._rawValue.Hour13.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour14 == null) {
-    const hour14 = 1
+    hour14.value = 1
   }
   else {
-    const hour15 = ref(fireTest._rawValue.Hour15.Minute1.EarthHumidity)
+    hour14.value = ref(fireTest._rawValue.Hour14.Minute1.EarthHumidity)
+  }
+  if (fireTest._rawValue.Hour15 == null) {
+    hour15.value = 1
+  }
+  else {
+    hour15.value = ref(fireTest._rawValue.Hour15.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour16 == null) {
-    const hour16 = 1
+    hour16.value = 1
   }
   else {
-    const hour16 = ref(fireTest._rawValue.Hour16.Minute1.EarthHumidity)
+    hour16.value = ref(fireTest._rawValue.Hour16.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour17 == null) {
-    const hour17 = 1
+    hour17.value = 1
   }
   else {
-    const hour17 = ref(fireTest._rawValue.Hour17.Minute1.EarthHumidity)
+    hour17.value = ref(fireTest._rawValue.Hour17.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour18 == null) {
-    const hour18 = 1
+    hour18.value = 1
   }
   else {
-    const hour18 = ref(fireTest._rawValue.Hour18.Minute1.EarthHumidity)
+    hour18.value = ref(fireTest._rawValue.Hour18.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour19 == null) {
-    const hour19 = 1
+    hour19.value = 1
   }
   else {
-    const hour19 = ref(fireTest._rawValue.Hour19.Minute1.EarthHumidity)
+    hour19.value = ref(fireTest._rawValue.Hour19.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour20 == null) {
-    const hour20 = 1
+    hour20.value = 1
   }
   else {
-    const hour20 = ref(fireTest._rawValue.Hour20.Minute1.EarthHumidity)
+    hour20.value = ref(fireTest._rawValue.Hour20.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour21 == null) {
-    const hour21 = 1
+    hour21.value = 1
   }
   else {
-    const hour21 = ref(fireTest._rawValue.Hour21.Minute1.EarthHumidity)
+    hour21.value = ref(fireTest._rawValue.Hour21.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour22 == null) {
-    const hour22 = 1
+    hour22.value = 1
   }
   else {
-    const hour22 = ref(fireTest._rawValue.Hour22.Minute1.EarthHumidity)
+    hour22.value = ref(fireTest._rawValue.Hour22.Minute1.EarthHumidity)
   }
   if (fireTest._rawValue.Hour23 == null) {
-    const hour23 = 1
+    hour23.value = 1
   }
   else {
-    const hour23 = ref(fireTest._rawValue.Hour23.Minute1.EarthHumidity)
+    hour23.value = ref(fireTest._rawValue.Hour23.Minute1.EarthHumidity)
   }
 
 
@@ -249,7 +280,8 @@ function kalleUpdate () {
   // const hour22 = ref(fireTest._rawValue.Hour22.Minute1.EarthHumidity)
   // const hour23 = ref(fireTest._rawValue.Hour23.Minute1.EarthHumidity)
 
-  console.log(hour2)
+
+  console.log(hour10.value.value)
   console.log(fireTest)
 
   const kalle = ref({
@@ -258,7 +290,7 @@ function kalleUpdate () {
       {
         label: 'JordHumiditet',
         backgroundColor: '#f87979',
-        data: [hour1.value, hour2.value, hour3.value, hour4.value, hour5.value, hour6.value, hour7.value, hour8.value, hour9.value, hour10.value, hour11.value, hour12.value, hour13.value, hour14.value, hour15.value, hour16.value, hour17.value, hour18.value, hour19.value, hour20.value, hour21.value, hour22.value, hour23.value]
+        data: [hour1.value.value, hour2.value.value, hour3.value.value, hour4.value.value, hour5.value.value, hour6.value.value, hour7.value.value, hour8.value.value, hour9.value.value, hour10.value.value, hour11.value.value, hour12.value.value, hour13.value.value, hour14.value.value, hour15.value.value, hour16.value.value, hour17.value.value, hour18.value.value, hour19.value.value, hour20.value.value, hour21.value.value, hour22.value.value, hour23.value.value]
       }
     ]
   })
