@@ -55,18 +55,20 @@ function goToMainPage () {
 
 </script>
 <template>
-  <div>
-    <h1>Sign up</h1>
-    <form @submit.prevent="handlesubmit">
-      <input type="text" placeholder="Enter name" v-model="name">
+<q-page class="container flex column justify-center items-center ">
+  <div class="content flex column justify-center items-center">
+      <h1>Sign up</h1>
+    <form class="yes flex column justify-center items-center">
+      <input class="text" type="text" placeholder="Enter name" v-model="name">
       <br>
-      <input type="number" placeholder="Eneter phone number" v-model="phoneNumber">
+      <input class="text" type="number" placeholder="Eneter phone number" v-model="phoneNumber">
       <br>
-      <input type="email" placeholder="Enter Email" v-model="email">
+      <input class="text" type="email" placeholder="Enter Email" v-model="email">
       <br>
-      <input type="password" v-model="password" placeholder="enter password">
+      <input class="text" type="password" v-model="password" placeholder="enter password">
+      <br>
 
-      <button type="submit" id="googleButton" @click="signUp()">sign up</button>
+      <button type="submit" id="SignUp" @click="signUp()">sign up</button>
       <p id="error"> {{ errorMsg }}</p>
 
       <router-link to="./login">Already have an acount? go to login</router-link>
@@ -74,17 +76,46 @@ function goToMainPage () {
       <button @click="goToMainPage()">
               go back to the main page
       </button>
+      <br>
+
 
 
 
 
     </form>
   </div>
+
+</q-page>
 </template>
 
 <style>
+button {
+  border-radius: 10px;
+}
+.content {
+  background-color: rgba(183, 253, 253, 0.768);
+  width: 50%;
+  margin: 3vh;
+  padding: 2vh;
+  border-radius: 20px;
+}
+#signUp {
+  width: 1%;
+}
 #error {
   font-size: x-small;
   color: red;
 }
+.text {
+  width: 300px;
+  margin: 2px;
+  background-color: rgb(204, 234, 255);
+}
+
+.container {
+  background-image: url(./../../public/icons/wallpaper5.jpg);
+  background-size: cover;
+}
+
+
 </style>

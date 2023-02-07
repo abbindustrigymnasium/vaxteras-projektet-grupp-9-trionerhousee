@@ -4,6 +4,7 @@
 
 
 import firebase from 'firebase/app'
+import { useRouter } from 'vue-router'
 import { VueFire, VueFireAuth } from 'vuefire'
 import { signInWithPopup, GoogleAuthProvider, getAuth, signInWithEmailAndPassword, } from 'firebase/auth'
 import { ref, watch } from 'vue'
@@ -12,7 +13,7 @@ import { useDatabaseObject, useDatabaseList } from 'vuefire'
 import { ref as dbref, set } from 'firebase/database'
 
 
-
+const router = useRouter();
 let errorMsg = ''
 let errorCode = ''
 const auth = getAuth()
@@ -60,37 +61,84 @@ function goToMainPage() {
 
 <template>
 
-  <div>
-    <h1>Login</h1>
-    <form @submit.prevent="handlesubmit">
+  <div class="BoxWithBoxIn">
 
-      <input type="email" placeholder="Enter Email" v-model="email">
+       <h1 class="text">Login</h1>
+      <button class="text" @click="goToMainPage()">
+        Go back to the main page
+      </button>
+
+    <div class="form flex column justify">
+
+      <input type="email" placeholder="Enter Email" class="text" v-model="email">
       <br>
-      <input type="password" v-model="password" placeholder="enter password">
-
-      <button type="submit" id="googleButton" @click="alerthello()">login</button>
+      <input type="password" v-model="password"  class="text" placeholder="enter password">
+      <br>
+      <button type="submit" id="googleButton"  class="text" @click="alerthello()">login</button>
       <p id="error"> {{ errorMsg }}</p>
 
       <router-link to="./setup">new to Trioner hosiee go to? setup new profile</router-link>
-      <br>
-
-      <button @click="goToMainPage()">
-        go back to the main page
-      </button>
 
 
 
 
 
 
-    </form>
+
+
+      </div>
   </div>
 </template>
 
 
 <style>
+button:hover {
+  background-color: rgba(1, 65, 73, 0.5);
+}
+button {
+  background-color: rgb(1, 105, 119);
+  border: none;
+  padding: 1vh;
+  box-shadow: 3px 3px;
+}
+input {
+  border: none;
+  width: 55%;
+  height: 5vh;
+
+}
 #error {
   font-size: x-small;
   color: red;
+}
+#googleButton{
+  width: 20%;
+  height: 17%;
+}
+.text {
+
+  font-weight: bolder;
+  border-radius: 15px;
+  box-shadow: 5px, 5px;
+
+}
+.header {
+  background-color: blue;
+  margin: 1vh;
+
+  border-radius: 30px;
+}
+.form {
+  background-color: rgb(253, 244, 201, 0.5);
+  margin: 1vh;
+  padding: 2vh;
+  border-radius: 40px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  height: 60%;
+
+    box-shadow: 3px 3px;
+
 }
 </style>

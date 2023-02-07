@@ -131,7 +131,8 @@ console.log(cookies)
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
 
-  let name = ca[3].replace('name=', '')
+let name = ca[0].replace('name=', '')
+
 
 console.log(name);
 
