@@ -7,7 +7,10 @@
       <div class=" self-center" @click="hello">
         <q-date v-model="date" minimal no-unset color="light-green" />
       </div>
-      <q-btn @click="kalleUpdate" class="bg-light-green q-mt-sm">Update graph</q-btn>
+
+      <q-btn @click="kalleUpdate(); checkData();" class="bg-light-green q-mt-sm">Update
+        graph</q-btn>
+
     </div>
   </div>
 
@@ -32,7 +35,6 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const graph = useDatabaseObject(dbref(db, 'TempHum'))
 const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 const users = useDatabaseObject(dbref(db, 'users'))
-
 
 
 const date = ref('2023/02/01')
@@ -81,14 +83,6 @@ if (month.value > 10) {
 let fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value + '/days' + day.value.value))
 
 
-//const graph1 = graph._rawValue.Month2.days1.Hour1.Minute1.EarthHumidity
-//const graph2 = graph._rawValue.Month2.days1.Hour1.Minute1.EarthHumidity
-//const graph3 = graph._rawValue.Month2.days1.Hour1.Minute1.EarthHumidity
-//const graph4 = graph._rawValue.Month2.days1.Hour1.Minute1.EarthHumidity
-//const graph5 = graph._rawValue.Month2.days1.Hour1.Minute1.EarthHumidity
-
-
-
 const chartData = ref({
   labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
   datasets: [
@@ -100,17 +94,6 @@ const chartData = ref({
   ]
 })
 
-
-// const kalle = ref({
-//   labels: ["02", "03", "04", "05", "06"],
-//   datasets: [
-//     {
-//       label: 'Data One',
-//       backgroundColor: '#f87979',
-//       data: [test._value, 3, 4, 5, 20]
-//     }
-//   ]
-// })
 
 const chartOptions = ref({
   responsive: true,
@@ -262,25 +245,6 @@ function kalleUpdate () {
   }
 
 
-  // const hour7 = ref(fireTest._rawValue.Hour7.Minute1.EarthHumidity)
-  // const hour8 = ref(fireTest._rawValue.Hour8.Minute1.EarthHumidity)
-  // const hour9 = ref(fireTest._rawValue.Hour9.Minute1.EarthHumidity)
-  // const hour10 = ref(fireTest._rawValue.Hour10.Minute1.EarthHumidity)
-  // const hour11 = ref(fireTest._rawValue.Hour11.Minute1.EarthHumidity)
-  // const hour12 = ref(fireTest._rawValue.Hour12.Minute1.EarthHumidity)
-  // const hour13 = ref(fireTest._rawValue.Hour13.Minute1.EarthHumidity)
-  // const hour14 = ref(fireTest._rawValue.Hour14.Minute1.EarthHumidity)
-  // const hour15 = ref(fireTest._rawValue.Hour15.Minute1.EarthHumidity)
-  // const hour16 = ref(fireTest._rawValue.Hour16.Minute1.EarthHumidity)
-  // const hour17 = ref(fireTest._rawValue.Hour17.Minute1.EarthHumidity)
-  // const hour18 = ref(fireTest._rawValue.Hour18.Minute1.EarthHumidity)
-  // const hour19 = ref(fireTest._rawValue.Hour19.Minute1.EarthHumidity)
-  // const hour20 = ref(fireTest._rawValue.Hour20.Minute1.EarthHumidity)
-  // const hour21 = ref(fireTest._rawValue.Hour21.Minute1.EarthHumidity)
-  // const hour22 = ref(fireTest._rawValue.Hour22.Minute1.EarthHumidity)
-  // const hour23 = ref(fireTest._rawValue.Hour23.Minute1.EarthHumidity)
-
-
   console.log(hour10.value.value)
   console.log(fireTest)
 
@@ -299,8 +263,6 @@ function kalleUpdate () {
 }
 
 function hello () {
-  console.log(date)
-
 
   if (date != null) {
     const month2 = ref(date.value.slice(5, 7))
@@ -322,12 +284,12 @@ function hello () {
     fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month2.value.value + '/days' + day2.value.value))
 
 
+
     console.log("Hello!!")
     console.log(fireTest)
   }
 
 }
-
 
 </script>
 
