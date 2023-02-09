@@ -3,8 +3,8 @@
   <q-page class="background row" v-if="liveData != null">
 
     <SideBar></SideBar>
-    <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
-      <div class="Abox bg-amber-1 column justify-center">
+    <div class="BoxWithBoxIn column flex justify-center items-center justify-around ">
+      <div class="Abox bg-amber-1 column justify-center ">
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
           <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
@@ -117,7 +117,7 @@ const regnskog = ref(false)
 
 function uploadSlider1 () {
 
-  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka.value)
+  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka._value)
 
 }
 function uploadSlider2 () {
@@ -188,6 +188,7 @@ watch(liveData, (val2) => {
   width: 130vh;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
+  box-shadow: 5px 5px 8px;
 }
 
 .picture {
