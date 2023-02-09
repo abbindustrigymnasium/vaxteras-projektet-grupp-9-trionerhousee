@@ -116,6 +116,19 @@ void checkPump() {
   }
 }
 
+void checkHatches() {
+  if (hatchState == true) {
+    Serial.println("hatch-ON");
+    servot.write(180);
+    servot2.write(0);
+  }
+  else {
+    Serial.println("hatch-OFF");
+    servot.write(0);
+    servot2.write(180);
+  }
+}
+
 void updateTime() {
   timeClient.update();
 
@@ -124,6 +137,15 @@ void updateTime() {
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
   monthDay = ((timesec) / 86400);
+
+  if (monthDay >= 31 &&  monthDay <= 59) {
+    months = 1;
+    monthDayRound = llround(monthDay) - 30;
+  }
+  else if (monthDay >= 59 && monthDay <= 90) {
+    months = 2;
+    monthDayRound = llround(monthDay) - 58;
+  }
 }
 
 void loop() {
@@ -156,19 +178,9 @@ void loop() {
     }
   }
 
+  checkHatches();
   checkPump();
   checkFan();
-
-  if (hatchState == true) {
-    Serial.println("hatch-ON");
-    servot.write(180);
-    servot2.write(0);
-  }
-  else {
-    Serial.println("hatch-OFF");
-    servot.write(0);
-    servot2.write(180);
-  }
 
   //  Serial.print("Gate:");
   //  Serial.println(hatchState);
@@ -180,14 +192,7 @@ void loop() {
   //  Serial.print("minutes");
   //  Serial.println(minutes);
 
-  if (monthDay >= 31 &&  monthDay <= 59) {
-    months = 1;
-    monthDayRound = llround(monthDay) - 30;
-  }
-  else if (monthDay >= 59 && monthDay <= 90) {
-    months = 2;
-    monthDayRound = llround(monthDay) - 58;
-  }
+
 
   //  if (sensor.measure()) {
   //    Serial.println("nice");
@@ -213,6 +218,7 @@ void loop() {
 
   delay(2000);
 
+  checkHatches();
   checkPump();
   checkFan();
 }
