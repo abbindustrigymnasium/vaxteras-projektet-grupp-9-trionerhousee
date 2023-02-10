@@ -8,8 +8,8 @@
 #include <Servo.h>
 
 AM2320 sensor;
-Servo servot;
-Servo servot2;
+Servo bigHatchServo;
+Servo bigHatchServo2;
 
 //defines where we should conect to firebase via the webb with the wifi name and pasword
 
@@ -61,10 +61,17 @@ int TargetTemp;
 
 void setup() {
   // put your setup code here, to run once:
+  timeClient.begin();
+  if (!Firebase.beginStream(firebaseData1, path + "/" + nodeID))
+  {
+    Serial.println("Could not begin stream");
+    Serial.println("REASON: " + firebaseData1.errorReason());
+  }
 
   Serial.begin(9600);
-  servot.attach(D1);
-  servot2.attach(D2);
+
+  bigHatchServo.attach(D1);
+  bigHatchServo2.attach(D2);
   Wire.begin(14, 12);
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD );
@@ -76,23 +83,16 @@ void setup() {
   Serial.print("Connected with IP: ");
   Serial.println(WiFi.localIP());
 
-  pinMode(fanDir, OUTPUT);
-  digitalWrite(fanDir, HIGH);
+  pinMode(PumpDir, OUTPUT);
+  digitalWrite(PumpDir, HIGH);
 
+  pinMode(FanDir, OUTPUT);
+  digitalWrite(FanDir, HIGH);
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH );
   Firebase.reconnectWiFi(true);
-
-  digitalWrite(fanDir, LOW);
-  digitalWrite(pumpDir, LOW);
-
-  timeClient.begin();
-  if (!Firebase.beginStream(firebaseData1, path + "/" + nodeID))
-  {
-    Serial.println("Could not begin stream");
-    Serial.println("REASON: " + firebaseData1.errorReason());
-  }
 }
+
 
 void checkFan() {
   if (fanState == true) {
@@ -119,13 +119,13 @@ void checkPump() {
 void checkHatches() {
   if (hatchState == true) {
     Serial.println("hatch-ON");
-    servot.write(180);
-    servot2.write(0);
+    bigHatchServo.write(180);
+    bigHatchServo2.write(0);
   }
   else {
     Serial.println("hatch-OFF");
-    servot.write(0);
-    servot2.write(180);
+    bigHatchServo.write(0);
+    bigHatchServo2.write(180);
   }
 }
 
