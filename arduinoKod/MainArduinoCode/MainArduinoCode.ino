@@ -9,7 +9,7 @@
 
 AM2320 sensor;
 Servo bigHatchServo;
-Servo bigHatchServo2;
+Servo fanHatchServo;
 
 //defines where we should conect to firebase via the webb with the wifi name and pasword
 
@@ -43,6 +43,7 @@ String Time;
 int days;
 int hours;
 int minutes;
+int seconds;
 int timeEpoche;
 int months = 1;
 int timesec;
@@ -52,6 +53,10 @@ int monthDayRound = llround(monthDay) + 1;
 bool fanState;
 bool pumpState;
 bool hatchState;
+
+bool oken;
+bool grasmark;
+bool regnskog;
 
 int hum;
 int temp;
@@ -70,8 +75,8 @@ void setup() {
 
   Serial.begin(9600);
 
-  bigHatchServo.attach(D1);
-  bigHatchServo2.attach(D2);
+  bigHatchServo.attach(D3, 544, 2400);
+  fanHatchServo.attach(D4, 544, 2400);
   Wire.begin(14, 12);
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD );
@@ -83,18 +88,18 @@ void setup() {
   Serial.print("Connected with IP: ");
   Serial.println(WiFi.localIP());
 
-  pinMode(PumpDir, OUTPUT);
-  digitalWrite(PumpDir, HIGH);
+  pinMode(pumpDir, OUTPUT);
+  digitalWrite(pumpDir, HIGH);
 
-  pinMode(FanDir, OUTPUT);
-  digitalWrite(FanDir, HIGH);
+  pinMode(fanDir, OUTPUT);
+  digitalWrite(fanDir, HIGH);
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH );
   Firebase.reconnectWiFi(true);
 }
 
 
-void checkFan() {
+void checkAll() {
   if (fanState == true) {
     Serial.println("fan-ON");
     analogWrite(fanSpeed, 1023);
@@ -103,29 +108,61 @@ void checkFan() {
     Serial.println("fan-OFF");
     analogWrite(fanSpeed, 0);
   }
-}
 
-void checkPump() {
   if (pumpState == true) {
-    Serial.println("pump-ON");
-    analogWrite(pumpSpeed, 1023);
+    if (oken == true) {
+      if (minutes == 30) {
+        if (seconds > 30) {
+          Serial.println("pump-ON-Oken");
+          analogWrite(pumpSpeed, 1023);
+        }
+      }
+      else {
+        Serial.println("pump-OFF");
+        analogWrite(pumpSpeed, 0);
+      }
+    }
+    else if (grasmark == true) {
+      if (minutes == 10 || minutes == 30 || minutes == 50) {
+        if (seconds > 50) {
+          Serial.println("pump-ON-Grasmark");
+          analogWrite(pumpSpeed, 1023);
+        }
+      }
+      else {
+        Serial.println("pump-OFF");
+        analogWrite(pumpSpeed, 0);
+      }
+    }
+    else if (regnskog == true) {
+      if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55) {
+        Serial.println(minutes);
+        Serial.println("pump-ON-Regnskog");
+        analogWrite(pumpSpeed, 1023);
+      }
+      else {
+        Serial.println("pump-OFF");
+        analogWrite(pumpSpeed, 0);
+        Serial.println(minutes);
+      }
+    }
+
   }
   else {
     Serial.println("pump-OFF");
     analogWrite(pumpSpeed, 0);
+    Serial.println(minutes);
   }
-}
 
-void checkHatches() {
   if (hatchState == true) {
     Serial.println("hatch-ON");
-    bigHatchServo.write(180);
-    bigHatchServo2.write(0);
+    bigHatchServo.write(90);
+    fanHatchServo.write(0);
   }
   else {
     Serial.println("hatch-OFF");
     bigHatchServo.write(0);
-    bigHatchServo2.write(180);
+    fanHatchServo.write(90);
   }
 }
 
@@ -133,6 +170,7 @@ void updateTime() {
   timeClient.update();
 
   minutes = timeClient.getMinutes();
+  seconds = timeClient.getSeconds();
   hours = timeClient.getHours() - 1;
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
@@ -177,10 +215,8 @@ void loop() {
       hatchState = firebaseData1.boolData();
     }
   }
-
-  checkHatches();
-  checkPump();
-  checkFan();
+  delay(2000);
+  checkAll();
 
   //  Serial.print("Gate:");
   //  Serial.println(hatchState);
@@ -217,8 +253,5 @@ void loop() {
   //  Firebase.setInt(firebaseData2, "LiveData/LiveJord", 34);
 
   delay(2000);
-
-  checkHatches();
-  checkPump();
-  checkFan();
+  checkAll();
 }
