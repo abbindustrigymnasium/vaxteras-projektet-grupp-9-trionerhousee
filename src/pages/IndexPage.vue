@@ -13,19 +13,19 @@
       <div class="Abox bg-amber-1 column justify-center">
 
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
-          <h3 class="stateText fontsize-60">Luckan är</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
-          <h1 class="stateText text-weight-bold" v-else>stängd</h1>
+          <div class="stateText">Luckan är</div>
+          <div id="info" class="stateText text-weight-bold" v-if="lucka">öppen</div>
+          <div id="info" class="stateText text-weight-bold" v-else>stängd</div>
 
-          <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="lucka">stängas vid</h3>
-          <h3 class="stateText" v-else>öppnas vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ dataSettings.luckaTempSetting - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.luckaTempSetting }}C°</h1>
+          <div class="stateText">och kommer </div>
+          <div class="stateText" v-if="lucka">stängas vid</div>
+          <div class="stateText" v-else>öppnas vid</div>
+          <div id="info" class="stateText text-weight-bold" v-if="lucka"> {{ dataSettings.luckaTempSetting - 1 }}°C</div>
+          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.luckaTempSetting }}C°</div>
         </div>
 
 
-        <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+        <img class="picture" src="../../public/icons/bild_på_växthus_här.png">
         <div class="row justify-start">
           <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
             track-size="4vh" thumb-size="6vh" />
@@ -38,8 +38,7 @@
 
 
       <div class="Abox bg-amber-1 column justify-center">
-        <div class="q-ml-xl">
-          <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+          <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
 
           <div class="row justify-start">
             <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label
@@ -48,17 +47,17 @@
               <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
             </q-btn>
           </div>
-        </div>
-        <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
-          <h3 class="stateText">Fläkten är</h3>
-          <h1 class="stateText text-weight-bold" v-if="flakt">PÅ</h1>
-          <h1 class="stateText text-weight-bold" v-else>AV</h1>
 
-          <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="flakt">stängas av vid</h3>
-          <h3 class="stateText" v-else>sättas på vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</h1>
+        <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
+          <div class="stateText">Fläkten är</div>
+          <div id="info" class="stateText text-weight-bold" v-if="flakt">PÅ</div>
+          <div id="info" class="stateText text-weight-bold" v-else>AV</div>
+
+          <div class="stateText">och kommer </div>
+          <div class="stateText" v-if="flakt">stängas av vid</div>
+          <div class="stateText" v-else>sättas på vid</div>
+          <div id="info" class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</div>
+          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</div>
         </div>
 
 
@@ -66,23 +65,23 @@
 
       </div>
       <div class="Abox bg-amber-1 column justify-center">
-        <div class="boxforstatus column items-center q-ml-xl q-pa-lg">
-          <h1 class="stateText text-weight-bold">Regn</h1>
-          <h3 class="stateText">inställningar</h3>
+
+
 
           <div class="boxButton column q-pa-md">
-            <q-btn color="light-green q-mb-sm" @click="okenUpload">
-              <h4 class="q-ma-sm q-px-xl">ÖKEN</h4>
+            <h3 class="heading">Regn inställningar</h3>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="okenUpload">
+              <div class="buttonText q-ma-sm q-px-xl">ÖKEN</div>
               <div class="statusBox bg-red" v-if="oken"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm" @click="grasmarkUpload">
-              <h4 class="q-ma-sm">GRÄSMARK</h4>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="grasmarkUpload">
+              <div class="buttonText q-ma-sm">GRÄSMARK</div>
               <div class="statusBox bg-red" v-if="grasmark"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm" @click="regnskogUpload">
-              <h4 class=" q-ma-sm q-pr-xs">REGNSKOG</h4>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="regnskogUpload">
+              <div class="buttonText q-ma-sm q-pr-xs">REGNSKOG</div>
               <div class="statusBox bg-red" v-if="regnskog"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
@@ -91,8 +90,8 @@
           </div>
 
 
-        </div>
-        <img class="picture2 q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+
+        <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
 
       </div>
     </div>
@@ -222,6 +221,32 @@ if (temp.value >= valueFlakt.value) {
 </script>
 
 <style>
+#info {
+  font-weight: bolder;
+  font-size: 4vw;
+}
+.heading {
+  font-weight: bolder;
+  height: 25%;
+  font-size: 3.7vw;
+  margin: 5%;
+  text-align: center;
+
+}
+.boxforstatus {
+  height: 100%;
+  display: flex;
+  width: 40%;
+  padding: 2%;
+  margin: 2%;
+}
+.stateText {
+  font-size: 3.5vw;
+  font-weight: bold;
+  height: 20%;
+  display: flex;
+
+}
 .BoxWithBoxIn {
   margin-left: 8vh;
   margin-top: 30px;
@@ -238,23 +263,27 @@ if (temp.value >= valueFlakt.value) {
 }
 
 .picture {
-  width: 60vh;
-  height: 40vh;
+  width: 50%;
+  height: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .picture2 {
-  width: 70vh;
-  height: 50vh;
+  width: 50%;
+  height: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .stateText {
   margin: 0px;
-  padding: 010px;
+  padding: 10px;
 
 }
 
 .slider {
-  width: 45vh;
+  width: 50%;
 
 }
 
@@ -270,9 +299,22 @@ if (temp.value >= valueFlakt.value) {
   width: 7vh;
 }
 
+.buttuno {
+
+  min-height: 15%;
+  width: 100%;
+}
+
 .statusBox {
   width: 4vh;
   height: 4vh;
   border-radius: 4px 4px 4px 4px;
+}
+.boxButton {
+  height: 100%;
+  width: 45%;
+}
+.buttonText {
+  font-size: 2vw;
 }
 </style>
