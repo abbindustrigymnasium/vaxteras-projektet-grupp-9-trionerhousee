@@ -54,7 +54,4 @@ const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 }
 
 
-.background {
-  background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
-}
 </style>

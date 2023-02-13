@@ -27,14 +27,17 @@ function alerthello () {
     //signed in
     const user = userCredendtials.user
     const nameObject = useDatabaseObject(dbref(db, 'users/' +  user.uid + '/name/'))
+    const adminObject = useDatabaseObject(dbref(db, 'users/' + user.uid + '/admin/'));
+    const admin = adminObject.value.$value;
     const name = nameObject.value.$value;
     console.log(nameObject.value.$value);
     document.getElementById('error').innerHTML = 'successfully loged in ' + name;
     document.getElementById('error').style.color = 'green'
     console.log(user.uid)
+    document.cookie = 'admin=' + admin + ';expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure;';
     document.cookie = 'name='+name+'; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
     document.location.reload(true)
-    document.cookie = 'userUid=' + user.uid + '; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
+    document.cookie = 'userUid=' +user.uid+ '; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
 
     return {name};
 
@@ -53,7 +56,6 @@ function alerthello () {
 function goToMainPage() {
   router.push("/")
 }
-
 
 
 </script>

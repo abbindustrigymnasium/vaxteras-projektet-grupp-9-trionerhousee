@@ -24,6 +24,7 @@ function signUp() {
     document.getElementById('error').innerHTML = 'successfully signed up ' + name;
     document.getElementById('error').style.color = 'green';
     console.log(user.uid);
+    document.cookie = 'admin=' + false + 'expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure;';
     document.cookie = 'name=' + name + '; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
     document.cookie = 'userUid=' + user.uid + '; expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure; ';
     set(dbref(db, '/users/' + user.uid ),  {
