@@ -8,10 +8,9 @@
 
     <div class="BoxWithBoxIn flex justify-center items-center ">
         <div>
-          <h1 id="welcomeUser">Welcome back{{name}}</h1>
+          <h2 id="welcomeUser" v-if="name.length > 12 && name.length < 1">Welcome back{{name}}</h2>
         </div>
       <div class="Abox bg-amber-1 column justify-center">
-
 
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
           <h3 class="stateText fontsize-60">Luckan är</h3>
@@ -116,7 +115,8 @@ const dataSettings = useDatabaseObject(dbref(db, 'dataSettings'))
 
 const valueLucka = ref(0)
 const valueFlakt = ref(0)
-
+const hum = ref(0)
+const temp = ref(0)
 const lucka = ref(true)
 const flakt = ref(true)
 const oken = ref(false)
@@ -134,7 +134,8 @@ let ca = decodedCookie.split(';')
 let name = ca[0].replace('name=', '')
 
 
-console.log(name);
+
+console.log('name is', name);
 
 
 
@@ -151,25 +152,25 @@ function uploadSlider2 () {
 
 function okenUpload () {
 
-  set(dbref(db, 'LiveData/oken'), true)
-  set(dbref(db, 'LiveData/grasmark'), false)
-  set(dbref(db, 'LiveData/regnskog'), false)
+  set(dbref(db, 'dataSettings/oken'), true)
+  set(dbref(db, 'dataSettings/grasmark'), false)
+  set(dbref(db, 'dataSettings/regnskog'), false)
 
 }
 
 function grasmarkUpload () {
 
-  set(dbref(db, 'LiveData/oken'), false)
-  set(dbref(db, 'LiveData/grasmark'), true)
-  set(dbref(db, 'LiveData/regnskog'), false)
+  set(dbref(db, 'dataSettings/oken'), false)
+  set(dbref(db, 'dataSettings/grasmark'), true)
+  set(dbref(db, 'dataSettings/regnskog'), false)
 
 }
 
 function regnskogUpload () {
 
-  set(dbref(db, 'LiveData/oken'), false)
-  set(dbref(db, 'LiveData/grasmark'), false)
-  set(dbref(db, 'LiveData/regnskog'), true)
+  set(dbref(db, 'dataSettings/oken'), false)
+  set(dbref(db, 'dataSettings/grasmark'), false)
+  set(dbref(db, 'dataSettings/regnskog'), true)
 
 }
 
@@ -180,20 +181,42 @@ watch(dataSettings, (val) => {
   if (val != null) {
     valueLucka.value = val.luckaTempSetting
     valueFlakt.value = val.FlaktTempSetting
+    oken.value = val.oken
+    grasmark.value = val.grasmark
+    regnskog.value = val.regnskog
   }
-
 })
 
 watch(liveData, (val2) => {
+
   if (val2 != null) {
-    lucka.value = val2.GateOpen
+
+    lucka.value = val2.gateOpen
     flakt.value = val2.fanON
-    oken.value = val2.oken
-    grasmark.value = val2.grasmark
-    regnskog.value = val2.regnskog
+
+    temp.value = val2.LiveTemp
+    hum.value = val2.LiveLuft
   }
 
 })
+
+if (temp.value >= valueLucka.value) {
+  if (lucka.value) {
+    set(dbref(db, 'LiveData/gateOpen'), false)
+  } else {
+    set(dbref(db, 'LiveData/gateOpen'), true)
+  }
+
+}
+
+if (temp.value >= valueFlakt.value) {
+  if (flakt.value) {
+    set(dbref(db, 'LiveData/fanON'), false)
+  } else {
+    set(dbref(db, 'LiveData/fanON'), true)
+  }
+}
+
 
 
 </script>
@@ -203,12 +226,12 @@ watch(liveData, (val2) => {
   margin-left: 8vh;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 140vh;
+  width: 65%;
   height: 200vh;
 }
 
 .Abox {
-  width: 130vh;
+  width: 100%;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
   margin: 3vh;
@@ -238,6 +261,7 @@ watch(liveData, (val2) => {
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
   background-attachment: fixed;
+
 }
 
 .buttono {
