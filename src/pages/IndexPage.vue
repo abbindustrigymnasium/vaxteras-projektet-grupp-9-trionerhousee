@@ -242,7 +242,6 @@ if (temp.value >= valueFlakt.value) {
 }
 .stateText {
   font-size: 3.5vw;
-  font-weight: bold;
   height: 20%;
   display: flex;
 
