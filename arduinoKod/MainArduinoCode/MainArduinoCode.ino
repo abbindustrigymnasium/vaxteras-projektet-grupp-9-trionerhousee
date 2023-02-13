@@ -195,7 +195,7 @@ void loop() {
 
 
   //  if (sensor.measure()) {
-  //    Serial.println("nice");
+  //    Serial.println("AM2320Working");
   //  }
   //  else{
   //    Serial.print("error:");
