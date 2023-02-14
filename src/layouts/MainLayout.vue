@@ -67,4 +67,6 @@ function gotoStatistics () {
   router.push("/Statistics")
 }
 
+
+
 </script>

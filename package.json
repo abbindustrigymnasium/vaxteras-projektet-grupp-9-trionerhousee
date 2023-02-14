@@ -11,9 +11,10 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
-    "chart.js": "^4.2.0",
+    "chart.js": "^4.2.1",
     "core-js": "^3.6.5",
     "firebase": "^9.16.0",
+    "js-cookie": "^3.0.1",
     "quasar": "^2.11.5",
     "vue": "^3.0.0",
     "vue-chartjs": "^5.2.0",
