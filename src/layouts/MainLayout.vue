@@ -6,19 +6,27 @@
 
 
         <img class="logo q-ml-md" src="../../public/icons/Trioner_housee.png" @click="gotoHome">
-        <div class="row bg-amber-1 col-5 justify-between">
-          <q-btn color="light-green" @click="gotoStatistics">
+
+        <div class="buttons row bg-amber-1">
+
+          <q-btn class="btn" color="light-green" @click="gotoStatistics">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/statisticsss.png">
             <div class="q-mt-xs"> Statistik</div>
           </q-btn>
-          <q-btn color="light-green" @click="gotoAboutUs">
+          <q-btn class="btn" color="light-green" @click="gotoAboutUs">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/aboutusss.png">
             <div class="q-mt-xs"> Om oss</div>
           </q-btn>
-          <q-btn color="light-green" @click="gotoSettings">
+          <q-btn class="btn" color="light-green" @click="gotoSettings">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/Settingsss.png">
             <div class="q-mt-xs"> inställningar</div>
           </q-btn>
+                    <q-btn class="btn" color="light-green" @click="gotoSettings">
+
+                      <div class="q-mt-xs"> inställningar</div>
+                    </q-btn>
+
+
         </div>
       </div>
 
@@ -34,6 +42,9 @@
 </template>
 
 <style>
+.btn {
+  margin: 0.0%;
+}
 .logo {
   width: 360px;
   height: 90px;
