@@ -27,6 +27,10 @@ void loop() {
   digitalWrite(MotorDir, HIGH);
 
   analogWrite(MotorSpeed, 1020);
+  
+  digitalWrite(FanDir, HIGH);
+
+  analogWrite(FanSpeed, 1020);
 
 
 }
