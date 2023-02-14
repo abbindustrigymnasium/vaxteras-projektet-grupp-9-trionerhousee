@@ -67,6 +67,12 @@ const props = defineProps({
 
 
 <style>
+.text-h1 {
+  font-weight: 600;
+}
+.text-h3 {
+  font-weight: 500;
+}
 .box {
   width: 40vh;
   height: 80vh;

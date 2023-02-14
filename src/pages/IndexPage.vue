@@ -190,8 +190,8 @@ watch(liveData, (val2) => {
 
   if (val2 != null) {
 
-    lucka.value = val2.hatchState
-    flakt.value = val2.fanON
+    lucka.value = val2.hatchStateWeb
+    flakt.value = val2.fanOnWeb
 
     temp.value = val2.LiveTemp
     hum.value = val2.LiveLuft
@@ -201,18 +201,18 @@ watch(liveData, (val2) => {
 
 /*if (temp.value >= valueLucka.value) {
   if (lucka.value) {
-    set(dbref(db, 'LiveData/hatchState'), false)
+    set(dbref(db, 'LiveData/hatchStateWeb'), false)
   } else {
-    set(dbref(db, 'LiveData/hatchState'), true)
+    set(dbref(db, 'LiveData/hatchStateWeb'), true)
   }
 
 }
 
 if (temp.value >= valueFlakt.value) {
   if (flakt.value) {
-    set(dbref(db, 'LiveData/fanON'), false)
+    set(dbref(db, 'LiveData/fanOnWeb'), false)
   } else {
-    set(dbref(db, 'LiveData/fanON'), true)
+    set(dbref(db, 'LiveData/fanOnWeb'), true)
   }
 }
 */
