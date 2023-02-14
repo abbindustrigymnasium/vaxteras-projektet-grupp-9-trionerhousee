@@ -5,6 +5,7 @@
     <SideBar></SideBar>
     <div class="BoxWithBoxIn column flex justify-center items-center justify-around">
       <div class="Abox bg-amber-1 column justify-center">
+        <chart1></chart1>
 
       </div>
 
@@ -25,6 +26,7 @@
 
 <script setup>
 import SideBar from "src/components/SideBar.vue"
+import Chart1 from "src/components/ChartComp1.vue"
 import { ref } from 'vue'
 import { db } from 'src/boot/firebase'
 import { useDatabaseObject } from 'vuefire'

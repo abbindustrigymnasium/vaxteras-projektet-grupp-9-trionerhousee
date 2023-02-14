@@ -71,5 +71,6 @@ const props = defineProps({
   width: 40vh;
   height: 80vh;
   border-radius: 15px 15px 15px 15px;
+  box-shadow: 5px 5px 8px;
 }
 </style>

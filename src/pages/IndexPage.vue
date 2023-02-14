@@ -140,7 +140,7 @@ console.log('name is', name);
 
 function uploadSlider1 () {
 
-  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka.value)
+  set(dbref(db, 'dataSettings/luckaTempSetting'), valueLucka._value)
 
 }
 function uploadSlider2 () {
@@ -259,6 +259,7 @@ if (temp.value >= valueFlakt.value) {
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
   margin: 3vh;
+  box-shadow: 5px 5px 8px;
 }
 
 .picture {

@@ -31,9 +31,6 @@ const byte fanDir = 0;
 const byte pumpSpeed = 4;
 const byte PumpDir = 2;
 
-const int ledPin = 4; //GPIO4 or D2 for LED
-const int swPin = 5;  //GPIO5 or D1 for Switch
-bool swState = false;
 String path = "/Nodes";
 String nodeID = "Node2";      //This is this node ID to receive control
 String otherNodeID = "Node1"; //This is other node ID to control
@@ -53,7 +50,7 @@ int timesec;
 int monthDay;
 int monthDayRound = llround(monthDay) + 1;
 
-int potVal;
+int fanVal;
 int pumpVal;
 
 float earthHum;
@@ -72,7 +69,7 @@ void setup()
 
     Serial.begin(9600);
     servot.attach(D1);
-    servot2.attach(D1);
+    servot2.attach(D2);
     Wire.begin(14,12);
 
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD );
@@ -118,48 +115,48 @@ void loop()
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
   monthDay = ((timesec)/86400);
-  
 
-  int potVal = Firebase.getInt(firebaseData2, "LiveData/Fan-speed");
-
-    if (Firebase.getInt(firebaseData2, "LiveData/Fan-speed")) {
+   if (Firebase.getInt(firebaseData2, "LiveData/Fan-speed")) {
     if (firebaseData2.dataType()== "int"){
-      potVal = firebaseData2.intData();   
-    }}
-    if (Firebase.getBool(firebaseData2, "LiveData/FanOn")) {
-    if (firebaseData2.dataType()== "boolean")
-    {
+      fanVal = firebaseData2.intData();   
+    }
+   }
+   if (Firebase.getBool(firebaseData2, "LiveData/fanON")) {
+    if (firebaseData2.dataType()== "boolean"){
       fanOn = firebaseData2.boolData();
     }
-  }
+   }
   Serial.println(pumpVal);
-  if (fanOn) {
-    digitalWrite(fanDir, LOW);
-    analogWrite(fanSpeed, potVal);
-  }
-  digitalWrite(fanDir, LOW);
-  analogWrite(fanSpeed, potVal);
+  Serial.println(fanOn);
+  
+  if (fanOn == true) {
 
-  if (Firebase.getInt(firebaseData2, "LiveData/pumpSpeed")) {
-    if (firebaseData2.dataType()== "int"){
-      pumpVal = firebaseData2.intData();
-    }
   }
-    if (Firebase.getBool(firebaseData2, "LiveData/HumidifyerOn")) {
-      if (firebaseData2.dataType()== "boolean"){
-      pumpOn= firebaseData2.boolData();
-    }}
-    
-  Serial.println(potVal);
-  if (pumpOn) {
-    digitalWrite(PumpDir, HIGH);
-    analogWrite(pumpSpeed, pumpVal);
-  }
+
+    digitalWrite(fanDir, LOW);
+    analogWrite(fanSpeed, 1020);
+  
+//  if (Firebase.getInt(firebaseData2, "LiveData/pumpSpeed")) {
+//    if (firebaseData2.dataType()== "int"){
+//      pumpVal = firebaseData2.intData();
+//    }
+//  }
+//    if (Firebase.getBool(firebaseData2, "LiveData/HumidifyerOn")) {
+//      if (firebaseData2.dataType()== "boolean"){
+//      pumpOn= firebaseData2.boolData();
+//    }}
+//    
+//  Serial.println(fanVal);
+//  if (pumpOn) {
+//    digitalWrite(PumpDir, HIGH);
+//    analogWrite(pumpSpeed, pumpVal);
+//  }
   if (Firebase.getBool(firebaseData2, "LiveData/GateOpen")) {
       Serial.println(firebaseData2.dataType());
     if (firebaseData2.dataType()== "boolean"){
        gateOpen = firebaseData2.boolData();
-    }}
+    }
+  }
 
 
   Serial.print("Gate:");
@@ -198,13 +195,13 @@ void loop()
   Serial.println(hum);
 
 
-  if (gateOpen == 0) {
+  if (gateOpen == false) {
     servot.write(180);
-    servot2.write(180);
+    servot2.write(0);
   }
   else {
-    servot.write(360);
-    servot2.write(360);
+    servot.write(0);
+    servot2.write(180);
   }
     
 
@@ -216,6 +213,4 @@ void loop()
   Firebase.setInt(firebaseData2, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
   Firebase.setInt(firebaseData2, "LiveData/LiveJord", 34);
 
-  
-  delay(500);
 }

@@ -26,7 +26,7 @@ void loop() {
 
   digitalWrite(MotorDir, HIGH);
 
-  analogWrite(MotorSpeed, potval);
+  analogWrite(MotorSpeed, 1020);
 
 
 }
