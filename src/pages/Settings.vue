@@ -65,6 +65,7 @@ let fläktOn = ref('one');
 let pumpOn = ref('one');
 let gate = ref('one');
 let awesome = false;
+let admin = false;
 let cookies = document.cookie
 
 watch(liveData, (val2) => {
@@ -74,7 +75,7 @@ watch(liveData, (val2) => {
     pumpSpeed.value = val2.pumpSpeed;
     pumpbool.value = val2.HumidifyerOn;
     fläktbool.value = val2.fanON;
-    gatebool.value = val2.gateOpen;
+    gatebool.value = val2.hatchState;
     if (pumpbool.value == true) {
       pumpOn = ref('one')
     }
@@ -114,15 +115,22 @@ function sendData() {
     set(dbref(db, 'LiveData/fanON'), false);
   }
   if (gate.value == 'one') {
-    set(dbref(db, 'LiveData/gateOpen'), true);
+    set(dbref(db, 'LiveData/hatchState'), true);
   } else {
-    set(dbref(db, 'LiveData/gateOpen'), false);
+    set(dbref(db, 'LiveData/hatchState'), false);
   }
 }
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
-console.log(ca)
-let admin = ca[3].replace('admin=', '')
+let adminString = ca[2]
+console.log(adminString)
+
+if (typeof adminString === 'string') {
+  if (adminString.startsWith('adm')) {
+    admin = adminString.replace("admin=", "")
+  }
+}
+
 
 if (admin)
   {

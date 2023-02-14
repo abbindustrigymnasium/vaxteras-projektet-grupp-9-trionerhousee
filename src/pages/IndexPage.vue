@@ -130,7 +130,7 @@ console.log(cookies)
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
 
-let name = ca[0].replace('name=', '')
+let name = ca[4].replace('name=', '')
 
 
 
@@ -190,7 +190,7 @@ watch(liveData, (val2) => {
 
   if (val2 != null) {
 
-    lucka.value = val2.gateOpen
+    lucka.value = val2.hatchState
     flakt.value = val2.fanON
 
     temp.value = val2.LiveTemp
@@ -199,11 +199,11 @@ watch(liveData, (val2) => {
 
 })
 
-if (temp.value >= valueLucka.value) {
+/*if (temp.value >= valueLucka.value) {
   if (lucka.value) {
-    set(dbref(db, 'LiveData/gateOpen'), false)
+    set(dbref(db, 'LiveData/hatchState'), false)
   } else {
-    set(dbref(db, 'LiveData/gateOpen'), true)
+    set(dbref(db, 'LiveData/hatchState'), true)
   }
 
 }
@@ -215,7 +215,7 @@ if (temp.value >= valueFlakt.value) {
     set(dbref(db, 'LiveData/fanON'), true)
   }
 }
-
+*/
 
 
 </script>
