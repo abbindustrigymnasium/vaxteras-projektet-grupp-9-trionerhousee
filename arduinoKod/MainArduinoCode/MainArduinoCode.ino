@@ -133,12 +133,24 @@ void checkAll()
     Serial.println("hello");
     if (oken == true)
     {
-      if (minutes == 30)
-      {
-        if (seconds > 30)
+      if (liveLuft < 25 ) {
+        if (minutes == 30)
         {
-          Serial.println("pump-ON-Oken");
-          analogWrite(pumpSpeed, 1023);
+          if (seconds > 30)
+          {
+            Serial.println("pump-ON-Oken");
+            analogWrite(pumpSpeed, 1023);
+          }
+          else
+          {
+            Serial.println("pump-OFF");
+            analogWrite(pumpSpeed, 0);
+          }
+        }
+        else
+        {
+          Serial.println("pump-OFF");
+          analogWrite(pumpSpeed, 0);
         }
       }
       else
@@ -149,12 +161,19 @@ void checkAll()
     }
     else if (grasmark == true)
     {
-      if (minutes == 10 || minutes == 30 || minutes == 50)
-      {
-        if (seconds > 50)
+      if (liveLuft < 60 ) {
+        if (minutes == 10 || minutes == 30 || minutes == 50)
         {
-          Serial.println("pump-ON-Grasmark");
-          analogWrite(pumpSpeed, 1023);
+          if (seconds > 50)
+          {
+            Serial.println("pump-ON-Grasmark");
+            analogWrite(pumpSpeed, 1023);
+          }
+        }
+        else
+        {
+          Serial.println("pump-OFF");
+          analogWrite(pumpSpeed, 0);
         }
       }
       else
@@ -165,12 +184,20 @@ void checkAll()
     }
     else if (regnskog == true)
     {
-      Serial.println(minutes);
-      if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
-      {
+      if (liveLuft < 95 ) {
         Serial.println(minutes);
-        Serial.println("pump-ON-Regnskog");
-        analogWrite(pumpSpeed, 1023);
+        if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
+        {
+          Serial.println(minutes);
+          Serial.println("pump-ON-Regnskog");
+          analogWrite(pumpSpeed, 1023);
+        }
+        else
+        {
+          Serial.println("pump-OFF");
+          analogWrite(pumpSpeed, 0);
+          Serial.println(minutes);
+        }
       }
       else
       {
