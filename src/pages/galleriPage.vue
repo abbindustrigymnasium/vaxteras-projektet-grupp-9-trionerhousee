@@ -6,7 +6,7 @@
 
 
 
-
+      <div class="galeryHeader bg-amber-1 column justefu-center "> <h1 class="headerText">Galleri</h1></div>
       <div class="Atox bg-amber-1 column justify-center">
         <div>
           <img class="image" src="../../public/icons/MicrosoftTeams-image.png" >
@@ -73,4 +73,14 @@ import { ref as dbref, set } from 'firebase/database'
   width: 130vh;
   border-radius: 20px 20px 20px 20px;
 }
+.galeryHeader {
+  border-radius: 10vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 3%;
+}
+.headerText {
+  font-weight: bold;
+}
+
 </style>

@@ -8,7 +8,7 @@
 
     <div class="BoxWithBoxIn flex justify-center items-center ">
         <div>
-          <h2 id="welcomeUser" v-if="name.length > 12 && name.length < 1">Welcome back{{name}}</h2>
+          <h2 id="welcomeUser" v-if="name != undefined "> Welcome back{{name}}</h2>
         </div>
       <div class="Abox bg-amber-1 column justify-center">
 
@@ -130,7 +130,13 @@ console.log(cookies)
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
 
-let name = ca[4].replace('name=', '')
+for (let i = 0; i < ca.length; i++) {
+  const nameStr = ca[i];
+  if (nameStr.startsWith('name')) {
+    let name = ca[4].replace('name=', '')
+  }
+}
+
 
 
 
@@ -255,6 +261,7 @@ if (temp.value >= valueFlakt.value) {
 }
 
 .Abox {
+  display: flex;
   width: 100%;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
@@ -263,14 +270,14 @@ if (temp.value >= valueFlakt.value) {
 }
 
 .picture {
-  width: 50%;
+
   height: 50%;
   margin: 10px;
   padding: 10px;
 }
 
 .picture2 {
-  width: 50%;
+
   height: 50%;
   margin: 10px;
   padding: 10px;
@@ -283,7 +290,7 @@ if (temp.value >= valueFlakt.value) {
 }
 
 .slider {
-  width: 50%;
+  width: 80%;
 
 }
 
