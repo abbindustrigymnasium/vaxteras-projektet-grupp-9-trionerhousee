@@ -21,9 +21,9 @@
             <img class="Iconpicture q-ma-sm" src="../../public/icons/Settingsss.png">
             <div class="q-mt-xs"> inställningar</div>
           </q-btn>
-                    <q-btn class="btn" color="light-green" @click="gotoSettings">
+                    <q-btn class="btn" color="light-green" @click="gotoGalleri">
 
-                      <div class="q-mt-xs"> inställningar</div>
+                      <div class="q-mt-xs"> Galleri</div>
                     </q-btn>
 
 
@@ -42,6 +42,7 @@
 </template>
 
 <style>
+
 .btn {
   margin: 0.0%;
 }
@@ -76,6 +77,10 @@ function gotoAboutUs () {
 }
 function gotoStatistics () {
   router.push("/Statistics")
+}
+
+function gotoGalleri () {
+  router.push("/Galleri")
 }
 
 

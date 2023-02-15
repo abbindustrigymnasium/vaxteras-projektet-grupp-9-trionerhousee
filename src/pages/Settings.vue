@@ -122,12 +122,14 @@ function sendData() {
 }
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
-let adminString = ca[2]
-console.log(adminString)
 
-if (typeof adminString === 'string') {
-  if (adminString.startsWith('adm')) {
-    admin = adminString.replace("admin=", "")
+
+
+for (let i = 0; i < ca.length; i++) {
+  let adminString = ca[i]
+  if (adminString.startsWith(' admin')) {
+    admin = adminString.replace(" admin=", "")
+    console.log(admin)
   }
 }
 
