@@ -130,7 +130,13 @@ console.log(cookies)
 let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
 
-let name = ca[4].replace('name=', '')
+for (let i = 0; i < ca.length; i++) {
+  const nameStr = ca[i];
+  if (nameStr.startsWith('name')) {
+    let name = ca[4].replace('name=', '')
+  }
+}
+
 
 
 
