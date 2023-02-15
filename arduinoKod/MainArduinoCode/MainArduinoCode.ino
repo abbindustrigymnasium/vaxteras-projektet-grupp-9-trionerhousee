@@ -133,7 +133,6 @@ void checkAll()
     Serial.println("hello");
     if (oken == true)
     {
-      if (liveLuft < 25 ) {
         if (minutes == 30)
         {
           if (seconds > 30)
@@ -152,16 +151,10 @@ void checkAll()
           Serial.println("pump-OFF");
           analogWrite(pumpSpeed, 0);
         }
-      }
-      else
-      {
-        Serial.println("pump-OFF");
-        analogWrite(pumpSpeed, 0);
-      }
+      
     }
     else if (grasmark == true)
     {
-      if (liveLuft < 60 ) {
         if (minutes == 10 || minutes == 30 || minutes == 50)
         {
           if (seconds > 50)
@@ -175,16 +168,9 @@ void checkAll()
           Serial.println("pump-OFF");
           analogWrite(pumpSpeed, 0);
         }
-      }
-      else
-      {
-        Serial.println("pump-OFF");
-        analogWrite(pumpSpeed, 0);
-      }
     }
     else if (regnskog == true)
     {
-      if (liveLuft < 95 ) {
         Serial.println(minutes);
         if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
         {
@@ -198,27 +184,11 @@ void checkAll()
           analogWrite(pumpSpeed, 0);
           Serial.println(minutes);
         }
-      }
-      else
-      {
-        Serial.println("pump-OFF");
-        analogWrite(pumpSpeed, 0);
-        Serial.println(minutes);
-      }
     }
-  }
-  else
-  {
-    Serial.println("pump-OFF");
-    analogWrite(pumpSpeed, 0);
-    Serial.println(minutes);
   }
 
   if (hatchState == true)
   {
-    Serial.println(liveTemp);
-    Serial.println(luckaTempSetting);
-    Serial.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
     if (liveTemp >= luckaTempSetting) {
       Serial.println("hatch-ON");
       bigHatchServo.write(110);
@@ -305,91 +275,58 @@ void loop()
     Serial.println("Stream timeout, resume streaming...");
   }
 
-  if (Firebase.getBool(firebaseData1, "LiveData/fanON"))
+  if (Firebase.getBool(firebaseData1, "LiveData/fanON") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
-      fanState = firebaseData1.boolData();
-    }
+    fanState = firebaseData1.boolData();
   }
 
-  if (Firebase.getBool(firebaseData1, "LiveData/HumidifyerOn"))
+  if (Firebase.getBool(firebaseData1, "LiveData/HumidifyerOn") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
-      pumpState = firebaseData1.boolData();
-    }
+    pumpState = firebaseData1.boolData();
   }
 
-  if (Firebase.getBool(firebaseData1, "LiveData/hatchState"))
+  if (Firebase.getBool(firebaseData1, "LiveData/hatchState") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
-      hatchState = firebaseData1.boolData();
-    }
+    hatchState = firebaseData1.boolData();
   }
-  if (Firebase.getBool(firebaseData1, "dataSettings/grasmark"))
+  if (Firebase.getBool(firebaseData1, "dataSettings/grasmark") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
       grasmark = firebaseData1.boolData();
-    }
   }
-  if (Firebase.getBool(firebaseData1, "dataSettings/regnskog"))
+  if (Firebase.getBool(firebaseData1, "dataSettings/regnskog") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
       regnskog = firebaseData1.boolData();
-    }
   }
-  if (Firebase.getBool(firebaseData1, "dataSettings/oken"))
+  if (Firebase.getBool(firebaseData1, "dataSettings/oken") && firebaseData1.dataType() == "boolean")
   {
-    if (firebaseData1.dataType() == "boolean")
-    {
       oken = firebaseData1.boolData();
-    }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveJord"))
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveJord") && firebaseData1.dataType() == "int")
   {
-    if (firebaseData1.dataType() == "int")
-    {
       liveJord = firebaseData1.intData();
-    }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveLuft"))
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveLuft") && firebaseData1.dataType() == "int")
   {
-    if (firebaseData1.dataType() == "int")
-    {
       liveLuft = firebaseData1.intData();
-    }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveTemp"))
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveTemp")  && firebaseData1.dataType() == "int")
   {
-    if (firebaseData1.dataType() == "int")
-    {
       liveTemp = firebaseData1.intData();
-    }
   }
-  if (Firebase.getInt(firebaseData1, "dataSettings/FlaktTempSetting"))
+  if (Firebase.getInt(firebaseData1, "dataSettings/FlaktTempSetting")  && firebaseData1.dataType() == "int")
   {
-    if (firebaseData1.dataType() == "int")
-    {
       FlaktTempSetting = firebaseData1.intData();
-    }
   }
-  if (Firebase.getInt(firebaseData1, "dataSettings/luckaTempSetting"))
+  if (Firebase.getInt(firebaseData1, "dataSettings/luckaTempSetting") && firebaseData1.dataType() == "int")
   {
-    if (firebaseData1.dataType() == "int")
-    {
       luckaTempSetting = firebaseData1.intData();
-    }
   }
-  delay(2000);
+  delay(1500);
   checkAll();
   getTempHum();
 
 
-  delay(2000);
+  delay(1500);
   checkAll();
   getTempHum();
 }
