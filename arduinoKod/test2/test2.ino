@@ -132,20 +132,13 @@ void checkAll()
     Serial.println("hello");
     if (oken == true)
     {
-      if (liveLuft < 30) {
-        if (minutes == 30)
+      if (hours == 15)
+      {
+        if (seconds > 30)
         {
-          if (seconds > 30)
-          {
-            Serial.println("pump-ON-Oken");
-            digitalWrite(pumpDir, HIGH);
-            analogWrite(pumpSpeed, 1023);
-          }
-        }
-        else
-        {
-          Serial.println("pump-OFF");
-          analogWrite(pumpSpeed, 0);
+          Serial.println("pump-ON-Oken");
+          digitalWrite(pumpDir, HIGH);
+          analogWrite(pumpSpeed, 1023);
         }
       }
       else
@@ -153,7 +146,6 @@ void checkAll()
         Serial.println("pump-OFF");
         analogWrite(pumpSpeed, 0);
       }
-
     }
     else if (grasmark == true)
     {
