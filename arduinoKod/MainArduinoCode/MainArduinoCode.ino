@@ -110,7 +110,7 @@ void checkAll()
 {
   if (fanState == true)
   {
-    if (liveTemp >= FlaktTempSetting) {
+    if (liveLuft >= FlaktTempSetting) {
       Serial.println("fan-ON");
       analogWrite(fanSpeed, 1023);
       Firebase.setBool(firebaseData1, "/LiveData/fanOnWeb", true);

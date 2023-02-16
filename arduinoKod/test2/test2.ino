@@ -244,12 +244,12 @@ void updateTime()
 
   if (monthDay >= 31 && monthDay <= 59)
   {
-    months = 1;
+    months = 2;
     monthDayRound = llround(monthDay) - 30;
   }
   else if (monthDay >= 59 && monthDay <= 90)
   {
-    months = 2;
+    months = 3;
     monthDayRound = llround(monthDay) - 58;
   }
 }
@@ -274,7 +274,7 @@ void getTempHum()
   Firebase.setInt(firebaseData1, "LiveData/LiveLuft", hum);
 
   Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/temperature", temp);
-  Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);
+  Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);  
   Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
   Firebase.setInt(firebaseData1, "LiveData/LiveJord", 34);
 
@@ -380,5 +380,4 @@ void loop()
 
   delay(2000);
   checkAll();
-  getTempHum();
 }
