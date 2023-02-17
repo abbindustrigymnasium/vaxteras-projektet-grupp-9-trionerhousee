@@ -1,4 +1,4 @@
-
+upp
 #include <FirebaseESP8266.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -272,12 +272,12 @@ void getTempHum()
   Serial.print("hum");
   Serial.println(hum);
 
-  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/humidity", hum);
+  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour" + String(hours) + "/Minute" + String(minutes) + "/humidity", hum);
   Firebase.setInt(firebaseData1, "LiveData/LiveLuft", hum);
 
-  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/temperature", temp);
+  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour" + String(hours) + "/Minute" + String(minutes) + "/temperature", temp);
   Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);
-  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
+  Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
   Firebase.setInt(firebaseData1, "LiveData/LiveJord", 34);
 
 }
