@@ -134,16 +134,21 @@ void checkAll()
     {
       if (hours == 15)
       {
-        if (seconds > 30)
+        if (minutes == 18)
         {
           Serial.println("pump-ON-Oken");
           digitalWrite(pumpDir, HIGH);
           analogWrite(pumpSpeed, 1023);
         }
+        else
+        {
+          Serial.println("pump-OFF-oken");
+          analogWrite(pumpSpeed, 0);
+        }
       }
       else
       {
-        Serial.println("pump-OFF");
+        Serial.println("pump-OFF-oken2");
         analogWrite(pumpSpeed, 0);
       }
     }
@@ -153,12 +158,9 @@ void checkAll()
 
         if (minutes == 10 || minutes == 30 || minutes == 50)
         {
-          if (seconds > 50)
-          {
-            Serial.println("pump-ON-Grasmark");
-            digitalWrite(pumpDir, HIGH);
-            analogWrite(pumpSpeed, 1023);
-          }
+          Serial.println("pump-ON-Grasmark");
+          digitalWrite(pumpDir, HIGH);
+          analogWrite(pumpSpeed, 1023);
         }
         else
         {
@@ -274,7 +276,7 @@ void getTempHum()
   Firebase.setInt(firebaseData1, "LiveData/LiveLuft", hum);
 
   Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/temperature", temp);
-  Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);  
+  Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);
   Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour-" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
   Firebase.setInt(firebaseData1, "LiveData/LiveJord", 34);
 
