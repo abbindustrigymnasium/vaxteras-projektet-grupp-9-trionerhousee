@@ -31,9 +31,6 @@ const byte fanDir = 0;
 const byte pumpSpeed = 4;
 const byte PumpDir = 2;
 
-const int ledPin = 4; // GPIO4 or D2 for LED
-const int swPin = 5;  // GPIO5 or D1 for Switch
-bool swState = false;
 String path = "/Nodes";
 String nodeID = "Node2";      // This is this node ID to receive control
 String otherNodeID = "Node1"; // This is other node ID to control
@@ -53,7 +50,7 @@ int timesec;
 int monthDay;
 int monthDayRound = llround(monthDay) + 1;
 
-int potVal;
+int fanVal;
 int pumpVal;
 
 float earthHum;
@@ -70,7 +67,7 @@ void setup()
 
   Serial.begin(9600);
   servot.attach(D1);
-  servot2.attach(D1);
+  servot2.attach(D2);
   Wire.begin(14, 12);
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -209,10 +206,10 @@ void loop()
   Serial.print("hum");
   Serial.println(hum);
 
-  if (gateOpen == 0)
+  if (gateOpen == false)
   {
     servot.write(180);
-    servot2.write(180);
+    servot2.write(0);
   }
   else
   {

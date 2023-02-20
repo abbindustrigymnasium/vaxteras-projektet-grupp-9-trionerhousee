@@ -1,24 +1,31 @@
 
 <template>
+
   <q-page class="background row" v-if="liveData != null">
 
-    <SideBar></SideBar>
-    <div class="BoxWithBoxIn column flex justify-center items-center justify-around ">
-      <div class="Abox bg-amber-1 column justify-center ">
-        <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
-          <h3 class="stateText fontsize-60">Luckan är</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka">öppen</h1>
-          <h1 class="stateText text-weight-bold" v-else>stängd</h1>
 
-          <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="lucka">stängas vid</h3>
-          <h3 class="stateText" v-else>öppnas vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="lucka"> {{ dataSettings.luckaTempSetting - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.luckaTempSetting }}C°</h1>
+    <SideBar></SideBar>
+
+    <div class="BoxWithBoxIn flex justify-center items-center ">
+        <div>
+          <h2 id="welcomeUser" v-if="name != undefined "> Welcome back{{name}}</h2>
+        </div>
+      <div class="Abox bg-amber-1 column justify-center">
+
+        <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
+          <div class="stateText">Luckan är</div>
+          <div id="info" class="stateText text-weight-bold" v-if="lucka">öppen</div>
+          <div id="info" class="stateText text-weight-bold" v-else>stängd</div>
+
+          <div class="stateText">och kommer </div>
+          <div class="stateText" v-if="lucka">stängas vid</div>
+          <div class="stateText" v-else>öppnas vid</div>
+          <div id="info" class="stateText text-weight-bold" v-if="lucka"> {{ dataSettings.luckaTempSetting - 1 }}°C</div>
+          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.luckaTempSetting }}C°</div>
         </div>
 
 
-        <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+        <img class="picture" src="../../public/icons/bild_på_växthus_här.png">
         <div class="row justify-start">
           <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
             track-size="4vh" thumb-size="6vh" />
@@ -31,8 +38,7 @@
 
 
       <div class="Abox bg-amber-1 column justify-center">
-        <div class="q-ml-xl">
-          <img class="picture q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+          <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
 
           <div class="row justify-start">
             <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label
@@ -41,17 +47,17 @@
               <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
             </q-btn>
           </div>
-        </div>
-        <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
-          <h3 class="stateText">Fläkten är</h3>
-          <h1 class="stateText text-weight-bold" v-if="flakt">PÅ</h1>
-          <h1 class="stateText text-weight-bold" v-else>AV</h1>
 
-          <h3 class="stateText">och kommer </h3>
-          <h3 class="stateText" v-if="flakt">stängas av vid</h3>
-          <h3 class="stateText" v-else>sättas på vid</h3>
-          <h1 class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</h1>
-          <h1 class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</h1>
+        <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
+          <div class="stateText">Fläkten är</div>
+          <div id="info" class="stateText text-weight-bold" v-if="flakt">PÅ</div>
+          <div id="info" class="stateText text-weight-bold" v-else>AV</div>
+
+          <div class="stateText">och kommer </div>
+          <div class="stateText" v-if="flakt">stängas av vid</div>
+          <div class="stateText" v-else>sättas på vid</div>
+          <div id="info" class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</div>
+          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</div>
         </div>
 
 
@@ -59,23 +65,23 @@
 
       </div>
       <div class="Abox bg-amber-1 column justify-center">
-        <div class="boxforstatus column items-center q-ml-xl q-pa-lg">
-          <h1 class="stateText text-weight-bold">Regn</h1>
-          <h3 class="stateText">inställningar</h3>
+
+
 
           <div class="boxButton column q-pa-md">
-            <q-btn color="light-green q-mb-sm" @click="okenUpload">
-              <h4 class="q-ma-sm q-px-xl">ÖKEN</h4>
+            <h3 class="heading">Regn inställningar</h3>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="okenUpload">
+              <div class="buttonText q-ma-sm q-px-xl">ÖKEN</div>
               <div class="statusBox bg-red" v-if="oken"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm" @click="grasmarkUpload">
-              <h4 class="q-ma-sm">GRÄSMARK</h4>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="grasmarkUpload">
+              <div class="buttonText q-ma-sm">GRÄSMARK</div>
               <div class="statusBox bg-red" v-if="grasmark"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
-            <q-btn color="light-green q-mb-sm" @click="regnskogUpload">
-              <h4 class=" q-ma-sm q-pr-xs">REGNSKOG</h4>
+            <q-btn class="buttuno" color="light-green q-mb-sm" @click="regnskogUpload">
+              <div class="buttonText q-ma-sm q-pr-xs">REGNSKOG</div>
               <div class="statusBox bg-red" v-if="regnskog"></div>
               <div class="statusBox" v-else></div>
             </q-btn>
@@ -84,8 +90,8 @@
           </div>
 
 
-        </div>
-        <img class="picture2 q-ma-xl" src="../../public/icons/bild_på_växthus_här.png">
+
+        <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
 
       </div>
     </div>
@@ -108,12 +114,35 @@ const dataSettings = useDatabaseObject(dbref(db, 'dataSettings'))
 
 const valueLucka = ref(0)
 const valueFlakt = ref(0)
-
+const hum = ref(0)
+const temp = ref(0)
 const lucka = ref(true)
 const flakt = ref(true)
 const oken = ref(false)
 const grasmark = ref(false)
 const regnskog = ref(false)
+
+let cookies = document.cookie
+
+console.log(cookies)
+
+
+let decodedCookie = decodeURIComponent(document.cookie)
+let ca = decodedCookie.split(';')
+
+for (let i = 0; i < ca.length; i++) {
+  const nameStr = ca[i];
+  if (nameStr.startsWith('name')) {
+    let name = ca[4].replace('name=', '')
+  }
+}
+
+
+
+
+console.log('name is', name);
+
+
 
 function uploadSlider1 () {
 
@@ -128,25 +157,25 @@ function uploadSlider2 () {
 
 function okenUpload () {
 
-  set(dbref(db, 'LiveData/oken'), true)
-  set(dbref(db, 'LiveData/grasmark'), false)
-  set(dbref(db, 'LiveData/regnskog'), false)
+  set(dbref(db, 'dataSettings/oken'), true)
+  set(dbref(db, 'dataSettings/grasmark'), false)
+  set(dbref(db, 'dataSettings/regnskog'), false)
 
 }
 
 function grasmarkUpload () {
 
-  set(dbref(db, 'LiveData/oken'), false)
-  set(dbref(db, 'LiveData/grasmark'), true)
-  set(dbref(db, 'LiveData/regnskog'), false)
+  set(dbref(db, 'dataSettings/oken'), false)
+  set(dbref(db, 'dataSettings/grasmark'), true)
+  set(dbref(db, 'dataSettings/regnskog'), false)
 
 }
 
 function regnskogUpload () {
 
-  set(dbref(db, 'LiveData/oken'), false)
-  set(dbref(db, 'LiveData/grasmark'), false)
-  set(dbref(db, 'LiveData/regnskog'), true)
+  set(dbref(db, 'dataSettings/oken'), false)
+  set(dbref(db, 'dataSettings/grasmark'), false)
+  set(dbref(db, 'dataSettings/regnskog'), true)
 
 }
 
@@ -157,63 +186,118 @@ watch(dataSettings, (val) => {
   if (val != null) {
     valueLucka.value = val.luckaTempSetting
     valueFlakt.value = val.FlaktTempSetting
+    oken.value = val.oken
+    grasmark.value = val.grasmark
+    regnskog.value = val.regnskog
   }
-
 })
 
 watch(liveData, (val2) => {
+
   if (val2 != null) {
-    lucka.value = val2.GateOpen
-    flakt.value = val2.fanON
-    oken.value = val2.oken
-    grasmark.value = val2.grasmark
-    regnskog.value = val2.regnskog
+
+    lucka.value = val2.hatchStateWeb
+    flakt.value = val2.fanOnWeb
+
+    temp.value = val2.LiveTemp
+    hum.value = val2.LiveLuft
   }
 
 })
+
+/*if (temp.value >= valueLucka.value) {
+  if (lucka.value) {
+    set(dbref(db, 'LiveData/hatchStateWeb'), false)
+  } else {
+    set(dbref(db, 'LiveData/hatchStateWeb'), true)
+  }
+
+}
+
+if (temp.value >= valueFlakt.value) {
+  if (flakt.value) {
+    set(dbref(db, 'LiveData/fanOnWeb'), false)
+  } else {
+    set(dbref(db, 'LiveData/fanOnWeb'), true)
+  }
+}
+*/
 
 
 </script>
 
 <style>
+#info {
+  font-weight: bolder;
+  font-size: 4vw;
+}
+.heading {
+  font-weight: bolder;
+  height: 25%;
+  font-size: 3.7vw;
+  margin: 5%;
+  text-align: center;
+
+}
+.boxforstatus {
+  height: 100%;
+  display: flex;
+  width: 40%;
+  padding: 2%;
+  margin: 2%;
+}
+.stateText {
+  font-size: 3.5vw;
+  height: 20%;
+  display: flex;
+
+}
 .BoxWithBoxIn {
   margin-left: 8vh;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 140vh;
+  width: 65%;
   height: 200vh;
 }
 
 .Abox {
-  width: 130vh;
+  display: flex;
+  width: 100%;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
+  margin: 3vh;
   box-shadow: 5px 5px 8px;
 }
 
 .picture {
-  width: 60vh;
-  height: 40vh;
+
+  height: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .picture2 {
-  width: 70vh;
-  height: 50vh;
+
+  height: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .stateText {
   margin: 0px;
-  padding: 010px;
+  padding: 10px;
 
 }
 
 .slider {
-  width: 45vh;
+  width: 80%;
 
 }
 
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+  background-attachment: fixed;
+
 }
 
 .buttono {
@@ -222,9 +306,22 @@ watch(liveData, (val2) => {
   width: 7vh;
 }
 
+.buttuno {
+
+  min-height: 15%;
+  width: 100%;
+}
+
 .statusBox {
   width: 4vh;
   height: 4vh;
   border-radius: 4px 4px 4px 4px;
+}
+.boxButton {
+  height: 100%;
+  width: 45%;
+}
+.buttonText {
+  font-size: 2vw;
 }
 </style>

@@ -7,7 +7,11 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'Setting', component: () => import('pages/Settings.vue') },
       { path: 'AboutUs', component: () => import('pages/AboutUs.vue') },
-      { path: 'Statistics', component: () => import('pages/Statistics.vue') }
+      { path: 'Statistics', component: () => import('pages/Statistics.vue') },
+      {path: 'setup', component: () => import('pages/setup.vue')},
+      {path: 'Galleri', component: () => import('pages/galleriPage.vue')},
+
+
     ]
   },
 
