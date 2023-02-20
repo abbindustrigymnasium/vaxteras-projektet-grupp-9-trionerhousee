@@ -12,7 +12,7 @@
         graph</q-btn>
 
     </div>
-</div>
+  </div>
 <!-- <q-btn @click="kalleUpdate" v-if="fireTest != null">Update graph</q-btn>   --></template>
 
 <script setup>
