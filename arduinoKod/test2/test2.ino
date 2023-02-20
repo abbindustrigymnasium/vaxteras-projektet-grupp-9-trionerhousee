@@ -1,4 +1,4 @@
-upp
+
 #include <FirebaseESP8266.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -58,6 +58,7 @@ int luckaTempSetting;
 bool fanState;
 bool pumpState;
 bool hatchState;
+bool fanOnWeb;
 
 bool oken;
 bool grasmark;
@@ -109,7 +110,7 @@ void checkAll()
 {
   if (fanState == true)
   {
-    if (liveTemp >= FlaktTempSetting) {
+    if (liveLuft >= FlaktTempSetting) {
       Serial.println("fan-ON");
       analogWrite(fanSpeed, 1023);
       Firebase.setBool(firebaseData1, "/LiveData/fanOnWeb", true);
@@ -210,7 +211,7 @@ void checkAll()
 
   if (hatchState == true)
   {
-    if (liveTemp >= luckaTempSetting) {
+    if (liveTemp >= luckaTempSetting || fanOnWeb == true) {
       Serial.println("hatch-ON");
       bigHatchServo.write(110);
       fanHatchServo.write(0);
@@ -376,6 +377,14 @@ void loop()
       luckaTempSetting = firebaseData1.intData();
     }
   }
+  if (Firebase.getBool(firebaseData1, "LiveData/fanOnWeb"))
+  {
+    if (firebaseData1.dataType() == "boolean")
+    {
+      fanOnWeb = firebaseData1.boolData();
+    }
+  }
+
   delay(2000);
   checkAll();
   getTempHum();
