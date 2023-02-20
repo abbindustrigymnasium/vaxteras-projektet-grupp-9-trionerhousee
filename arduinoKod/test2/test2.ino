@@ -135,6 +135,7 @@ void checkAll()
     {
       if (hours == 15)
       {
+
         if (minutes == 18)
         {
           Serial.println("pump-ON-Oken");
@@ -177,7 +178,7 @@ void checkAll()
     }
     else if (regnskog == true)
     {
-      if (liveLuft < 95) {
+
         Serial.println(minutes);
         if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
         {
@@ -192,13 +193,6 @@ void checkAll()
           analogWrite(pumpSpeed, 0);
           Serial.println(minutes);
         }
-      }
-      else
-      {
-        Serial.println("pump-OFF 1");
-        analogWrite(pumpSpeed, 0);
-        Serial.println(minutes);
-      }
     }
   }
   else
