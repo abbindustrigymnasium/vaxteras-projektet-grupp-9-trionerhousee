@@ -12,7 +12,7 @@
         graph</q-btn>
 
     </div>
-  </div>
+</div>
 <!-- <q-btn @click="kalleUpdate" v-if="fireTest != null">Update graph</q-btn>   --></template>
 
 <script setup>
@@ -83,7 +83,7 @@ const chartData = ref({
   labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
   datasets: [
     {
-      label: 'Luftfuktighet',
+      label: 'Temperatur',
       backgroundColor: '#f87979',
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     }
@@ -105,139 +105,139 @@ function kalleUpdate () {
     hour1.value = 1
   }
   else {
-    hour1.value = ref(fireTest._rawValue.Hour1.Minute1.humidity)
+    hour1.value = ref(fireTest._rawValue.Hour1.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour2 == null) {
     hour2.value = 1
   }
   else {
-    hour2.value = ref(fireTest._rawValue.Hour2.Minute1.humidity)
+    hour2.value = ref(fireTest._rawValue.Hour2.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour3 == null) {
     hour3.value = 1
   }
   else {
-    hour3.value = ref(fireTest._rawValue.Hour3.Minute1.humidity)
+    hour3.value = ref(fireTest._rawValue.Hour3.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour4 == null) {
     hour4.value = 1
   }
   else {
-    hour4.value = ref(fireTest._rawValue.Hour4.Minute1.humidity)
+    hour4.value = ref(fireTest._rawValue.Hour4.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour5 == null) {
     hour5.value = 1
   }
   else {
-    hour5.value = ref(fireTest._rawValue.Hour5.Minute1.humidity)
+    hour5.value = ref(fireTest._rawValue.Hour5.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour6 == null) {
     hour6.value = 1
   }
   else {
-    hour6.value = ref(fireTest._rawValue.Hour6.Minute1.humidity)
+    hour6.value = ref(fireTest._rawValue.Hour6.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour7 == null) {
     hour7.value = 1
   }
   else {
-    hour7.value = ref(fireTest._rawValue.Hour7.Minute1.humidity)
+    hour7.value = ref(fireTest._rawValue.Hour7.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour8 == null) {
     hour8.value = 1
   }
   else {
-    hour8.value = ref(fireTest._rawValue.Hour8.Minute1.humidity)
+    hour8.value = ref(fireTest._rawValue.Hour8.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour9 == null) {
     hour9.value = 1
   }
   else {
-    hour9.value = ref(fireTest._rawValue.Hour9.Minute1.humidity)
+    hour9.value = ref(fireTest._rawValue.Hour9.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour10 == null) {
     hour10.value = 1
   }
   else {
-    hour10.value = ref(fireTest._rawValue.Hour10.Minute1.humidity)
+    hour10.value = ref(fireTest._rawValue.Hour10.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour11 == null) {
     hour11.value = 1
   }
   else {
-    hour11.value = ref(fireTest._rawValue.Hour11.Minute1.humidity)
+    hour11.value = ref(fireTest._rawValue.Hour11.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour12 == null) {
     hour12.value = 1
   }
   else {
-    hour12.value = ref(fireTest._rawValue.Hour12.Minute1.humidity)
+    hour12.value = ref(fireTest._rawValue.Hour12.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour13 == null) {
     hour13.value = 1
   }
   else {
-    hour13.value = ref(fireTest._rawValue.Hour13.Minute1.humidity)
+    hour13.value = ref(fireTest._rawValue.Hour13.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour14 == null) {
     hour14.value = 1
   }
   else {
-    hour14.value = ref(fireTest._rawValue.Hour14.Minute1.humidity)
+    hour14.value = ref(fireTest._rawValue.Hour14.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour15 == null) {
     hour15.value = 1
   }
   else {
-    hour15.value = ref(fireTest._rawValue.Hour15.Minute1.humidity)
+    hour15.value = ref(fireTest._rawValue.Hour15.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour16 == null) {
     hour16.value = 1
   }
   else {
-    hour16.value = ref(fireTest._rawValue.Hour16.Minute1.humidity)
+    hour16.value = ref(fireTest._rawValue.Hour16.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour17 == null) {
     hour17.value = 1
   }
   else {
-    hour17.value = ref(fireTest._rawValue.Hour17.Minute1.humidity)
+    hour17.value = ref(fireTest._rawValue.Hour17.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour18 == null) {
     hour18.value = 1
   }
   else {
-    hour18.value = ref(fireTest._rawValue.Hour18.Minute1.humidity)
+    hour18.value = ref(fireTest._rawValue.Hour18.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour19 == null) {
     hour19.value = 1
   }
   else {
-    hour19.value = ref(fireTest._rawValue.Hour19.Minute1.humidity)
+    hour19.value = ref(fireTest._rawValue.Hour19.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour20 == null) {
     hour20.value = 1
   }
   else {
-    hour20.value = ref(fireTest._rawValue.Hour20.Minute1.humidity)
+    hour20.value = ref(fireTest._rawValue.Hour20.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour21 == null) {
     hour21.value = 1
   }
   else {
-    hour21.value = ref(fireTest._rawValue.Hour21.Minute1.humidity)
+    hour21.value = ref(fireTest._rawValue.Hour21.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour22 == null) {
     hour22.value = 1
   }
   else {
-    hour22.value = ref(fireTest._rawValue.Hour22.Minute1.humidity)
+    hour22.value = ref(fireTest._rawValue.Hour22.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour23 == null) {
     hour23.value = 1
   }
   else {
-    hour23.value = ref(fireTest._rawValue.Hour23.Minute1.humidity)
+    hour23.value = ref(fireTest._rawValue.Hour23.Minute1.temperature)
   }
 
 
@@ -248,7 +248,7 @@ function kalleUpdate () {
     labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
     datasets: [
       {
-        label: 'Luftfuktighet',
+        label: 'Temperatur',
         backgroundColor: '#f87979',
         data: [hour1.value.value, hour2.value.value, hour3.value.value, hour4.value.value, hour5.value.value, hour6.value.value, hour7.value.value, hour8.value.value, hour9.value.value, hour10.value.value, hour11.value.value, hour12.value.value, hour13.value.value, hour14.value.value, hour15.value.value, hour16.value.value, hour17.value.value, hour18.value.value, hour19.value.value, hour20.value.value, hour21.value.value, hour22.value.value, hour23.value.value]
       }

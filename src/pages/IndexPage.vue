@@ -1,15 +1,14 @@
 
 <template>
-
   <q-page class="background row" v-if="liveData != null">
 
 
     <SideBar></SideBar>
 
     <div class="BoxWithBoxIn flex justify-center items-center ">
-        <div>
-          <h2 id="welcomeUser" v-if="name != undefined "> Welcome back{{name}}</h2>
-        </div>
+      <div>
+        <h2 id="welcomeUser" v-if="name != undefined"> Welcome back{{ name }}</h2>
+      </div>
       <div class="Abox bg-amber-1 column justify-center">
 
         <div class="boxforstatus bg-amber-1 column items-center q-ml-xl q-pa-lg">
@@ -25,7 +24,7 @@
         </div>
 
 
-        <img class="picture" src="../../public/icons/bild_på_växthus_här.png">
+        <img class="picture" src="../../public/icons/lucka.png">
         <div class="row justify-start">
           <q-slider class="slider q-ml-xl" v-model="valueLucka" :min="10" :max="50" :step="1" label color="light-green"
             track-size="4vh" thumb-size="6vh" />
@@ -38,15 +37,15 @@
 
 
       <div class="Abox bg-amber-1 column justify-center">
-          <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
+        <img class="picture" src="../../public/icons/flakt.png">
 
-          <div class="row justify-start">
-            <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="50" :step="1" label
-              color="light-green" track-size="4vh" thumb-size="6vh" />
-            <q-btn color="light-green" class="buttono q-ml-xl">
-              <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
-            </q-btn>
-          </div>
+        <div class="row justify-start">
+          <q-slider class="slider q-ml-xl" v-model="valueFlakt" :min="10" :max="99" :step="1" label color="light-green"
+            track-size="4vh" thumb-size="6vh" />
+          <q-btn color="light-green" class="buttono q-ml-xl">
+            <img class="buttono" src="../../public/icons/Send_icon.png" @click="uploadSlider2" />
+          </q-btn>
+        </div>
 
         <div class="boxforstatus bg-amber-1 column items-center q-mr-xl q-pa-lg">
           <div class="stateText">Fläkten är</div>
@@ -56,8 +55,8 @@
           <div class="stateText">och kommer </div>
           <div class="stateText" v-if="flakt">stängas av vid</div>
           <div class="stateText" v-else>sättas på vid</div>
-          <div id="info" class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}°C</div>
-          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}°C</div>
+          <div id="info" class="stateText text-weight-bold" v-if="flakt"> {{ dataSettings.FlaktTempSetting - 1 }}%</div>
+          <div id="info" class="stateText text-weight-bold" v-else> {{ dataSettings.FlaktTempSetting }}%</div>
         </div>
 
 
@@ -65,34 +64,25 @@
 
       </div>
       <div class="Abox bg-amber-1 column justify-center">
-
-
-
-          <div class="boxButton column q-pa-md">
-            <h3 class="heading">Regn inställningar</h3>
-            <q-btn class="buttuno" color="light-green q-mb-sm" @click="okenUpload">
-              <div class="buttonText q-ma-sm q-px-xl">ÖKEN</div>
-              <div class="statusBox bg-red" v-if="oken"></div>
-              <div class="statusBox" v-else></div>
-            </q-btn>
-            <q-btn class="buttuno" color="light-green q-mb-sm" @click="grasmarkUpload">
-              <div class="buttonText q-ma-sm">GRÄSMARK</div>
-              <div class="statusBox bg-red" v-if="grasmark"></div>
-              <div class="statusBox" v-else></div>
-            </q-btn>
-            <q-btn class="buttuno" color="light-green q-mb-sm" @click="regnskogUpload">
-              <div class="buttonText q-ma-sm q-pr-xs">REGNSKOG</div>
-              <div class="statusBox bg-red" v-if="regnskog"></div>
-              <div class="statusBox" v-else></div>
-            </q-btn>
-
-
-          </div>
-
-
-
-        <img class="picture2" src="../../public/icons/bild_på_växthus_här.png">
-
+        <div class="boxButton column q-pa-md items-center">
+          <h1 class="heading text-weight-bolder ">Bevattning</h1>
+          <q-btn class="buttuno" color="light-green q-mb-sm q-ml-lg" @click="okenUpload">
+            <div class="buttonText q-ma-sm q-px-xl">ÖKEN</div>
+            <div class="statusBox bg-red" v-if="oken"></div>
+            <div class="statusBox" v-else></div>
+          </q-btn>
+          <q-btn class="buttuno" color="light-green q-mb-sm q-ml-lg" @click="grasmarkUpload">
+            <div class="buttonText q-ma-sm">GRÄSMARK</div>
+            <div class="statusBox bg-red" v-if="grasmark"></div>
+            <div class="statusBox" v-else></div>
+          </q-btn>
+          <q-btn class="buttuno" color="light-green q-mb-sm q-ml-lg" @click="regnskogUpload">
+            <div class="buttonText q-ma-sm q-pr-xs">REGNSKOG</div>
+            <div class="statusBox bg-red" v-if="regnskog"></div>
+            <div class="statusBox" v-else></div>
+          </q-btn>
+        </div>
+        <img class="picture2" src="../../public/icons/pump.png">
       </div>
     </div>
 
@@ -131,7 +121,7 @@ let decodedCookie = decodeURIComponent(document.cookie)
 let ca = decodedCookie.split(';')
 
 for (let i = 0; i < ca.length; i++) {
-  const nameStr = ca[i];
+  const nameStr = ca[i]
   if (nameStr.startsWith('name')) {
     let name = ca[4].replace('name=', '')
   }
@@ -140,7 +130,7 @@ for (let i = 0; i < ca.length; i++) {
 
 
 
-console.log('name is', name);
+console.log('name is', name)
 
 
 
@@ -231,14 +221,14 @@ if (temp.value >= valueFlakt.value) {
   font-weight: bolder;
   font-size: 4vw;
 }
+
 .heading {
-  font-weight: bolder;
   height: 25%;
-  font-size: 3.7vw;
   margin: 5%;
-  text-align: center;
+
 
 }
+
 .boxforstatus {
   height: 100%;
   display: flex;
@@ -246,12 +236,14 @@ if (temp.value >= valueFlakt.value) {
   padding: 2%;
   margin: 2%;
 }
+
 .stateText {
   font-size: 3.5vw;
   height: 20%;
   display: flex;
 
 }
+
 .BoxWithBoxIn {
   margin-left: 8vh;
   margin-top: 30px;
@@ -271,16 +263,18 @@ if (temp.value >= valueFlakt.value) {
 
 .picture {
 
-  height: 50%;
+  height: 60%;
   margin: 10px;
   padding: 10px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .picture2 {
 
-  height: 50%;
+  height: 60%;
   margin: 10px;
   padding: 10px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .stateText {
@@ -290,7 +284,7 @@ if (temp.value >= valueFlakt.value) {
 }
 
 .slider {
-  width: 80%;
+  width: 65%;
 
 }
 
@@ -309,7 +303,7 @@ if (temp.value >= valueFlakt.value) {
 .buttuno {
 
   min-height: 15%;
-  width: 100%;
+  width: 65%;
 }
 
 .statusBox {
@@ -317,10 +311,12 @@ if (temp.value >= valueFlakt.value) {
   height: 4vh;
   border-radius: 4px 4px 4px 4px;
 }
+
 .boxButton {
   height: 100%;
   width: 45%;
 }
+
 .buttonText {
   font-size: 2vw;
 }

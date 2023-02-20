@@ -9,22 +9,22 @@
 
         <div class="buttons row bg-amber-1">
 
-          <q-btn class="btn" color="light-green" @click="gotoStatistics">
+          <q-btn class="btn q-ml-xl" color="light-green" @click="gotoStatistics">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/statisticsss.png">
             <div class="q-mt-xs"> Statistik</div>
           </q-btn>
-          <q-btn class="btn" color="light-green" @click="gotoAboutUs">
+          <q-btn class="btn q-ml-xl" color="light-green" @click="gotoAboutUs">
             <img class="Iconpicture q-ma-sm" src="../../public/icons/aboutusss.png">
             <div class="q-mt-xs"> Om oss</div>
           </q-btn>
-          <q-btn class="btn" color="light-green" @click="gotoSettings">
-            <img class="Iconpicture q-ma-sm" src="../../public/icons/Settingsss.png">
-            <div class="q-mt-xs"> inställningar</div>
+          <q-btn class="btn q-ml-xl" color="light-green" @click="gotoSettings">
+            <img class="Iconpicture q-ma-sm" src="../../public/icons/guyguyguyg.png">
+            <div class="q-mt-xs"> Logga in</div>
           </q-btn>
-                    <q-btn class="btn" color="light-green" @click="gotoGalleri">
-
-                      <div class="q-mt-xs"> Galleri</div>
-                    </q-btn>
+          <q-btn class="btn q-ml-xl" color="light-green" @click="gotoGalleri">
+            <img class="Iconpicture q-ma-sm" src="../../public/icons/instagram.png">
+            <div class="q-mt-xs"> Galleri</div>
+          </q-btn>
 
 
         </div>
@@ -42,10 +42,6 @@
 </template>
 
 <style>
-
-.btn {
-  margin: 0.0%;
-}
 .logo {
   width: 360px;
   height: 90px;
