@@ -2,12 +2,12 @@
   <q-page class="background row">
     <SideBar></SideBar>
 
-    <div class="BoxWithBoxIn row flex items-top justify-between">
+    <div class="BroxWithboxIn row flex items-top justify-between">
       <div class="longBox q-ml-xl q-mt-lg bg-amber-1 row justify-center items-start">
         <h1 class="text-weight-bold q-mt-xl">Vårt Team</h1>
       </div>
 
-      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-mr-sm q-ml-lg">
+      <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-mr-sm q-ml-lg">
         <img class="faceImg q-mt-md" src="../../public/icons/sebastian.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Sebastin Alin</h3>
@@ -20,7 +20,7 @@
 
         </div>
       </div>
-      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-mx-sm">
+      <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-mx-sm">
         <img class="faceImg q-mt-md" src="../../public/icons/axel.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Axel Roxenborg</h3>
@@ -31,7 +31,7 @@
         </div>
 
       </div>
-      <div class="Abox bg-amber-1 column justify-top items-center q-mt-xl q-ml-sm">
+      <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-ml-sm">
         <img class="faceImg q-mt-md" src="../../public/icons/simon.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Simon Meier</h3>
@@ -45,10 +45,12 @@
 
       </div>
 
-
     </div>
 
+
+
   </q-page>
+
 </template>
 
 <script setup>
@@ -57,11 +59,16 @@ import SideBar from "src/components/SideBar.vue"
 </script>
 
 <style>
+template {
+  background-color: aqua;
+}
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.BoxWithBoxIn {
+.BroxWithboxIn {
   margin-left: 8vh;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -69,10 +76,13 @@ import SideBar from "src/components/SideBar.vue"
   height: 60vh;
 }
 
-.Abox {
+.Abrox {
   width: 40vh;
-  height: 50vh;
   border-radius: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .faceImg {
@@ -84,6 +94,7 @@ import SideBar from "src/components/SideBar.vue"
 .nameText {
   margin: 0px;
   padding: 0px;
+  text-align: center;
 }
 
 .longBox {

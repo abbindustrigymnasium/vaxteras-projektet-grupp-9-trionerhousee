@@ -41,6 +41,9 @@ const liveData = useDatabaseObject(dbref(db, 'LiveData'))
 </script>
 
 <style>
+.background {
+  background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
+}
 .BoxWithBoxIn {
   margin-left: 8vh;
   margin-top: 30px;
@@ -53,10 +56,5 @@ const liveData = useDatabaseObject(dbref(db, 'LiveData'))
   width: 130vh;
   height: 60vh;
   border-radius: 20px 20px 20px 20px;
-}
-
-
-.background {
-  background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
 }
 </style>

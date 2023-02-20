@@ -3,6 +3,9 @@ import { boot } from 'quasar/wrappers'
 import { VueFire, VueFireAuth } from 'vuefire'
 import { initializeApp, getApps } from "firebase/app"
 import { getDatabase } from "firebase/database"
+
+import { GoogleAuthProvider, getAuth , createUserWithEmailAndPassword } from 'firebase/auth'
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBslwY7gKcIWTltrOcEeDooZWzSRRcSBUg",
@@ -21,6 +24,11 @@ if (!apps.length) {
 } else {
   firebaseApp = apps[0]
 }
+
+const provider = new GoogleAuthProvider()
+
+
+
 
 const db = getDatabase(firebaseApp)
 
