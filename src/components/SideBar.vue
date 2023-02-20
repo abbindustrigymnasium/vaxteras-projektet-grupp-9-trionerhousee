@@ -1,7 +1,7 @@
 <template>
   <q-page-sticky v-if="liveData != null" position="right" :offset="[30, 30]">
     <div class="box flex bg-amber-1 column justify-center items-center justify-around text-black">
-      <div id="name"> {{name}}</div>
+      <div id="name"> {{ name }}</div>
       <div class="column items-center " @click="gotoStatistics">
         <div class="text-h3">
           Temperatur
@@ -25,15 +25,12 @@
           Jordfuktighet
         </div>
         <div class="text-h1">
-          {{ liveData.LiveJord }}%
+          WIP
         </div>
       </div>
     </div>
 
   </q-page-sticky>
-
-
-
 </template>
 
 
@@ -70,9 +67,11 @@ const props = defineProps({
 .text-h1 {
   font-weight: 600;
 }
+
 .text-h3 {
   font-weight: 500;
 }
+
 .box {
   width: 40vh;
   height: 80vh;
