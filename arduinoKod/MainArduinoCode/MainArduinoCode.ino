@@ -162,7 +162,7 @@ void checkAll() {
   else {
     Serial.println("hatch-OFF");
     bigHatchServo.write(0);
-    fanHatchServo.write(90);
+    fanHatchServo.write(180);
   }
 }
 
