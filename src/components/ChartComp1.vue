@@ -101,11 +101,15 @@ function kalleUpdate () {
 
 
   //const fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value + '/days' + day.value.value))
+
+  //for (let i = 0; i < 24; i++) {
+  //}
+
   if (fireTest._rawValue.Hour1 == null) {
     hour1.value = 1
   }
   else {
-    hour1.value = ref(fireTest._rawValue.Hour1.Minute1.humidity)
+    hour1.value = ref(fireTest._rawValue.Hours1.Minute1.humidity)
   }
   if (fireTest._rawValue.Hour2 == null) {
     hour2.value = 1
