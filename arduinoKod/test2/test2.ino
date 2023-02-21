@@ -1,4 +1,3 @@
-
 #include <FirebaseESP8266.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -7,6 +6,7 @@
 #include <AM2320.h>
 #include <Servo.h>
 
+//define servos
 AM2320 sensor;
 Servo bigHatchServo;
 Servo fanHatchServo;
@@ -38,6 +38,7 @@ String otherNodeID = "Node1"; // This is other node ID to control
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200, 60000);
 
+//define time variables
 String Time;
 int days;
 int hours;
@@ -108,6 +109,7 @@ void setup()
   Firebase.reconnectWiFi(true);
 }
 
+//function to check firebase data
 void checkAll()
 {
   if (fanState == true)
@@ -229,7 +231,7 @@ void checkAll()
   }
 }
 
-
+//timeclient loop, updates the time
 void updateTime()
 {
   timeClient.update();
@@ -260,8 +262,12 @@ void updateTime()
   }
 }
 
+<<<<<<< HEAD
 
 
+=======
+//function to check temp and hum to send to firebase
+>>>>>>> 1b971d188b5f830b17d7b57d386c6fa74e314076
 void getTempHum()
 {
   if (sensor.measure()) {
@@ -303,6 +309,7 @@ void loop()
     Serial.println("Stream timeout, resume streaming...");
   }
 
+  //read firebase data
   if (Firebase.getBool(firebaseData1, "LiveData/fanON"))
   {
     if (firebaseData1.dataType() == "boolean")
