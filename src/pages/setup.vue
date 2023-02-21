@@ -59,24 +59,24 @@ function goToMainPage () {
 <template>
   <q-page class="container2 flex column justify-center items-center ">
     <div class="content2 flex column justify-center items-center">
-      <h1>Sign up</h1>
+      <h1>Bli medlem</h1>
       <form class="yes flex column justify-center items-center">
-        <input class="text2" type="text" placeholder="Enter name" v-model="name">
+        <input class="text2" type="text" placeholder="Namn" v-model="name">
         <br>
-        <input class="text2" type="number" placeholder="Eneter phone number" v-model="phoneNumber">
+        <input class="text2" type="number" placeholder="Telefonnummer" v-model="phoneNumber">
         <br>
-        <input class="text2" type="email" placeholder="Enter Email" v-model="email">
+        <input class="text2" type="email" placeholder="namn@exempel.com" v-model="email">
         <br>
-        <input class="text2" type="password" v-model="password" placeholder="enter password">
+        <input class="text2" type="password" v-model="password" placeholder="Lösenord">
         <br>
 
-        <button type="submit" id="SignUp2" @click="signUp()">sign up</button>
+        <button type="submit" id="SignUp2" @click="signUp()">Registrera dig</button>
         <p id="error"> {{ errorMsg }}</p>
 
-        <router-link to="./Setting">Already have an acount? go to login</router-link>
+        <router-link to="./Setting">Har du redan ett konto? Gå till Logga in</router-link>
         <br>
         <button @click="goToMainPage()">
-          go back to the main page
+          Gå tillbaka till Huvudsida
         </button>
         <br>
 

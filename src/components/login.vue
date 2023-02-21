@@ -34,7 +34,7 @@ function alerthello () {
     const admin = adminObject.value.$value
     const name = nameObject.value.$value
     console.log(nameObject.value.$value)
-    document.getElementById('error').innerHTML = 'successfully loged in ' + name
+    document.getElementById('error').innerHTML = 'framgångsrikt inloggad ' + name
     document.getElementById('error').style.color = 'green'
     console.log(user.uid)
     document.cookie = 'admin=' + admin + ';expiers=Fri, 31 Dec 2025 23:59:59 GMT; SamSite=None; Secure;'
@@ -68,21 +68,21 @@ function goToMainPage () {
 <template>
   <div class="BoxWithBoxIn">
 
-    <h1 class="text">Login</h1>
+    <h1 class="text">Logga in</h1>
     <button class="text" @click="goToMainPage()">
-      Go back to the main page
+      Gå tillbaka till huvudsidan
     </button>
 
     <div class="form flex column justify">
 
-      <input type="email" placeholder="Enter Email" class="text" v-model="email">
+      <input type="email" placeholder="Email" class="text" v-model="email">
       <br>
-      <input type="password" v-model="password" class="text" placeholder="enter password">
+      <input type="password" v-model="password" class="text" placeholder="Lösenord">
       <br>
-      <button type="submit" id="googleButton" class="text" @click="alerthello()">login</button>
+      <button type="submit" id="googleButton" class="text" @click="alerthello()">Logga in</button>
       <p id="error"> {{ errorMsg }}</p>
 
-      <router-link to="./setup">new to Trioner hosiee go to? setup new profile</router-link>
+      <router-link to="./setup">Ny till Trioner housee?</router-link>
 
 
 

@@ -7,13 +7,13 @@
         <h1 class="text-weight-bold q-mt-xl">Vårt Team</h1>
       </div>
 
-      <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-mr-sm q-ml-lg">
-        <img class="faceImg q-mt-md" src="../../public/icons/sebastian.png" />
+      <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-mr-">
+        <img class="faceImg q-mt-xs" src="../../public/icons/sebastian.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Sebastin Alin</h3>
           <h5 class="nameText text-weight-bold">Mjukvaruingenjör</h5>
           <h5 class="nameText text-weight-bold">Firebaseingenjör</h5>
-          <h5 class="nameText text-weight-bold">Photograf</h5>
+          <h5 class="nameText text-weight-bold">Fotograf</h5>
           <h5 class="nameText text-weight-bold">Arduinoingenjör</h5>
 
 
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-mx-sm">
-        <img class="faceImg q-mt-md" src="../../public/icons/axel.png" />
+        <img class="faceImg q-mt-xs" src="../../public/icons/axel.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Axel Roxenborg</h3>
           <h5 class="nameText text-weight-bold">CAD-Expert</h5>
@@ -32,7 +32,7 @@
 
       </div>
       <div class="Abrox bg-amber-1 column justify-top items-center q-mt-xl q-ml-sm">
-        <img class="faceImg q-mt-md" src="../../public/icons/simon.png" />
+        <img class="faceImg q-mt-xs" src="../../public/icons/simon.png" />
         <div class="q-mt-md column items-center ">
           <h3 class="nameText text-weight-bold">Simon Meier</h3>
 
@@ -50,7 +50,6 @@
 
 
   </q-page>
-
 </template>
 
 <script setup>
@@ -62,6 +61,7 @@ import SideBar from "src/components/SideBar.vue"
 template {
   background-color: aqua;
 }
+
 .background {
   background-image: url("../../public/icons/Wall_of_Ivy_Leaves_1.jpg");
   background-attachment: fixed;
@@ -73,7 +73,7 @@ template {
   margin-top: 30px;
   margin-bottom: 30px;
   width: 140vh;
-  height: 60vh;
+  height: 75vh;
 }
 
 .Abrox {

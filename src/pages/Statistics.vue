@@ -8,8 +8,6 @@
         <chart1></chart1>
 
       </div>
-
-
       <div class="A2box bg-amber-1 column justify-center">
         <chart2></chart2>
 
@@ -50,7 +48,7 @@ const liveData = useDatabaseObject(dbref(db, 'LiveData'))
   margin-top: 30px;
   margin-bottom: 30px;
   width: 140vh;
-  height: 200vh;
+  height: 140vh;
 }
 
 .A2box {
