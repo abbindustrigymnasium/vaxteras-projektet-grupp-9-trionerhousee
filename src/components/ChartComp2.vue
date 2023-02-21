@@ -1,6 +1,6 @@
 <template v-if="users != null">
   <div class="row justify-around">
-    <div class="boxPrison">
+    <div class="box3Prison">
       <Line :data="chartData" :options="chartOptions" />
     </div>
     <div class="column self-center">
@@ -12,7 +12,7 @@
         graph</q-btn>
 
     </div>
-</div>
+  </div>
 <!-- <q-btn @click="kalleUpdate" v-if="fireTest != null">Update graph</q-btn>   --></template>
 
 <script setup>
@@ -290,7 +290,7 @@ function hello () {
 </script>
 
 <style>
-.boxPrison {
+.box3Prison {
   width: 75vh;
   height: 55vh;
 }

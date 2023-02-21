@@ -1,6 +1,6 @@
 <template v-if="users != null">
   <div class="row justify-around">
-    <div class="boxPrison">
+    <div class="box2Prison">
       <Line :data="chartData" :options="chartOptions" />
     </div>
     <div class="column self-center">
@@ -290,7 +290,7 @@ function hello () {
 </script>
 
 <style>
-.boxPrison {
+.box2Prison {
   width: 75vh;
   height: 55vh;
 }
