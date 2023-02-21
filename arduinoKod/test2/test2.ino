@@ -6,6 +6,16 @@
 #include <AM2320.h>
 #include <Servo.h>
 
+//display
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
 //define servos
 AM2320 sensor;
 Servo bigHatchServo;
@@ -49,7 +59,6 @@ int months = 1;
 int timesec;
 int monthDay;
 int monthDayRound = llround(monthDay) + 1;
-float monthFloat;
 
 int liveJord;
 int liveLuft;
@@ -69,7 +78,6 @@ bool regnskog;
 int hum;
 int temp;
 float earthHum;
-
 
 int TargetTemp;
 
@@ -107,6 +115,23 @@ void setup()
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Firebase.reconnectWiFi(true);
+
+  //display
+  Wire.pins(D7, D8);
+  
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;);
+  }
+  delay(2000);
+  display.clearDisplay();
+
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 10);
+  // Display static text
+  display.println("Hello, world!");
+  display.display();
 }
 
 //function to check firebase data
@@ -183,20 +208,20 @@ void checkAll()
     else if (regnskog == true)
     {
 
+      Serial.println(minutes);
+      if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
+      {
         Serial.println(minutes);
-        if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
-        {
-          Serial.println(minutes);
-          Serial.println("pump-ON-Regnskog");
-          digitalWrite(pumpDir, HIGH);
-          analogWrite(pumpSpeed, 1023);
-        }
-        else
-        {
-          Serial.println("pump-OFF 1");
-          analogWrite(pumpSpeed, 0);
-          Serial.println(minutes);
-        }
+        Serial.println("pump-ON-Regnskog");
+        digitalWrite(pumpDir, HIGH);
+        analogWrite(pumpSpeed, 1023);
+      }
+      else
+      {
+        Serial.println("pump-OFF 1");
+        analogWrite(pumpSpeed, 0);
+        Serial.println(minutes);
+      }
     }
   }
   else
@@ -211,13 +236,13 @@ void checkAll()
   {
     if (liveTemp >= luckaTempSetting || fanOnWeb == true) {
       Serial.println("hatch-ON");
-      bigHatchServo.write(0);
+      bigHatchServo.write(110);
       fanHatchServo.write(0);
       Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", true);
     }
     else {
       Serial.println("hatch-OFF");
-      bigHatchServo.write(110);
+      bigHatchServo.write(0);
       fanHatchServo.write(140);
       Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", false);
     }
@@ -225,7 +250,7 @@ void checkAll()
   else
   {
     Serial.println("hatch-OFF");
-    bigHatchServo.write(110);
+    bigHatchServo.write(0);
     fanHatchServo.write(140);
     Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", false);
   }
@@ -241,14 +266,7 @@ void updateTime()
   hours = timeClient.getHours() - 1;
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
-  monthFloat = ((timesec) / 86400);
-
-
-  for (int i = 0; i < 32; i++) {
-    if (monthFloat > i) {
-      monthDay = i;
-    }
-  }
+  monthDay = ((timesec) / 86400);
 
   if (monthDay >= 31 && monthDay <= 59)
   {
