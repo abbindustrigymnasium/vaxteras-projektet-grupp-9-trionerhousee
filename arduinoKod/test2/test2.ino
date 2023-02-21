@@ -48,6 +48,7 @@ int months = 1;
 int timesec;
 int monthDay;
 int monthDayRound = llround(monthDay) + 1;
+float monthFloat;
 
 int liveJord;
 int liveLuft;
@@ -67,6 +68,7 @@ bool regnskog;
 int hum;
 int temp;
 float earthHum;
+
 
 int TargetTemp;
 
@@ -213,13 +215,13 @@ void checkAll()
   {
     if (liveTemp >= luckaTempSetting || fanOnWeb == true) {
       Serial.println("hatch-ON");
-      bigHatchServo.write(110);
+      bigHatchServo.write(0);
       fanHatchServo.write(0);
       Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", true);
     }
     else {
       Serial.println("hatch-OFF");
-      bigHatchServo.write(0);
+      bigHatchServo.write(110);
       fanHatchServo.write(140);
       Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", false);
     }
@@ -227,7 +229,7 @@ void checkAll()
   else
   {
     Serial.println("hatch-OFF");
-    bigHatchServo.write(0);
+    bigHatchServo.write(110);
     fanHatchServo.write(140);
     Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", false);
   }
@@ -243,7 +245,14 @@ void updateTime()
   hours = timeClient.getHours() - 1;
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
-  monthDay = ((timesec) / 86400);
+  monthFloat = ((timesec) / 86400);
+
+
+  for (int i = 0; i < 32; i++) {
+    if (monthFloat > i) {
+      monthDay = i;
+    }
+  }
 
   if (monthDay >= 31 && monthDay <= 59)
   {
