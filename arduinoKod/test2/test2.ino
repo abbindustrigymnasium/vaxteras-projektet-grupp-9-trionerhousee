@@ -6,7 +6,7 @@
 #include <AM2320.h>
 #include <Servo.h>
 
-//define servos
+// define servos
 AM2320 sensor;
 Servo bigHatchServo;
 Servo fanHatchServo;
@@ -38,7 +38,7 @@ String otherNodeID = "Node1"; // This is other node ID to control
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200, 60000);
 
-//define time variables
+// define time variables
 String Time;
 int days;
 int hours;
@@ -69,7 +69,6 @@ bool regnskog;
 int hum;
 int temp;
 float earthHum;
-
 
 int TargetTemp;
 
@@ -109,17 +108,19 @@ void setup()
   Firebase.reconnectWiFi(true);
 }
 
-//function to check firebase data
+// function to check firebase data
 void checkAll()
 {
   if (fanState == true)
   {
-    if (liveLuft >= FlaktTempSetting) {
+    if (liveLuft >= FlaktTempSetting)
+    {
       Serial.println("fan-ON");
       analogWrite(fanSpeed, 1023);
       Firebase.setBool(firebaseData1, "/LiveData/fanOnWeb", true);
     }
-    else {
+    else
+    {
       Serial.println("fan-OFF");
       analogWrite(fanSpeed, 0);
       Firebase.setBool(firebaseData1, "/LiveData/fanOnWeb", false);
@@ -160,7 +161,8 @@ void checkAll()
     }
     else if (grasmark == true)
     {
-      if (liveLuft < 70) {
+      if (liveLuft < 70)
+      {
 
         if (minutes == 10 || minutes == 30 || minutes == 50)
         {
@@ -206,16 +208,17 @@ void checkAll()
     Serial.println(minutes);
   }
 
-
   if (hatchState == true)
   {
-    if (liveTemp >= luckaTempSetting || fanOnWeb == true) {
+    if (liveTemp >= luckaTempSetting || fanOnWeb == true)
+    {
       Serial.println("hatch-ON");
       bigHatchServo.write(0);
       fanHatchServo.write(0);
       Firebase.setBool(firebaseData1, "/LiveData/hatchStateWeb", true);
     }
-    else {
+    else
+    {
       Serial.println("hatch-OFF");
       bigHatchServo.write(110);
       fanHatchServo.write(140);
@@ -231,7 +234,7 @@ void checkAll()
   }
 }
 
-//timeclient loop, updates the time
+// timeclient loop, updates the time
 void updateTime()
 {
   timeClient.update();
@@ -243,10 +246,11 @@ void updateTime()
   timesec = timeEpoche - 1672517078;
   monthFloat = ((timesec) / 86400);
 
-
-  for (int i = 0; i < 100; i++) {
-    if (monthFloat > i) {
-      monthDay = i+1;
+  for (int i = 0; i < 100; i++)
+  {
+    if (monthFloat > i)
+    {
+      monthDay = i + 1;
       Serial.println(monthDay);
     }
   }
@@ -262,18 +266,15 @@ void updateTime()
   }
 }
 
-<<<<<<< HEAD
-
-
-=======
-//function to check temp and hum to send to firebase
->>>>>>> 1b971d188b5f830b17d7b57d386c6fa74e314076
+// function to check temp and hum to send to firebase
 void getTempHum()
 {
-  if (sensor.measure()) {
+  if (sensor.measure())
+  {
     Serial.println("AM2320Working");
   }
-  else {
+  else
+  {
     Serial.print("error:");
     Serial.println(sensor.getErrorCode());
   }
@@ -291,7 +292,6 @@ void getTempHum()
   Firebase.setInt(firebaseData1, "LiveData/LiveTemp", temp);
   Firebase.setInt(firebaseData1, "/TempHum/Month" + String(months) + "/days" + String(monthDayRound) + "/Hour" + String(hours) + "/Minute" + String(minutes) + "/EarthHumidity", 34);
   Firebase.setInt(firebaseData1, "LiveData/LiveJord", 34);
-
 }
 
 void loop()
@@ -309,7 +309,7 @@ void loop()
     Serial.println("Stream timeout, resume streaming...");
   }
 
-  //read firebase data
+  // read firebase data
   if (Firebase.getBool(firebaseData1, "LiveData/fanON"))
   {
     if (firebaseData1.dataType() == "boolean")
@@ -354,35 +354,35 @@ void loop()
       oken = firebaseData1.boolData();
     }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveJord") )
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveJord"))
   {
     if (firebaseData1.dataType() == "int")
     {
       liveJord = firebaseData1.intData();
     }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveLuft") )
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveLuft"))
   {
     if (firebaseData1.dataType() == "int")
     {
       liveLuft = firebaseData1.intData();
     }
   }
-  if (Firebase.getInt(firebaseData1, "LiveData/LiveTemp") )
+  if (Firebase.getInt(firebaseData1, "LiveData/LiveTemp"))
   {
     if (firebaseData1.dataType() == "int")
     {
       liveTemp = firebaseData1.intData();
     }
   }
-  if (Firebase.getInt(firebaseData1, "dataSettings/FlaktTempSetting") )
+  if (Firebase.getInt(firebaseData1, "dataSettings/FlaktTempSetting"))
   {
     if (firebaseData1.dataType() == "int")
     {
       FlaktTempSetting = firebaseData1.intData();
     }
   }
-  if (Firebase.getInt(firebaseData1, "dataSettings/luckaTempSetting") )
+  if (Firebase.getInt(firebaseData1, "dataSettings/luckaTempSetting"))
   {
     if (firebaseData1.dataType() == "int")
     {
