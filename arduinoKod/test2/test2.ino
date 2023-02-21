@@ -181,20 +181,20 @@ void checkAll()
     else if (regnskog == true)
     {
 
+      Serial.println(minutes);
+      if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
+      {
         Serial.println(minutes);
-        if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
-        {
-          Serial.println(minutes);
-          Serial.println("pump-ON-Regnskog");
-          digitalWrite(pumpDir, HIGH);
-          analogWrite(pumpSpeed, 1023);
-        }
-        else
-        {
-          Serial.println("pump-OFF 1");
-          analogWrite(pumpSpeed, 0);
-          Serial.println(minutes);
-        }
+        Serial.println("pump-ON-Regnskog");
+        digitalWrite(pumpDir, HIGH);
+        analogWrite(pumpSpeed, 1023);
+      }
+      else
+      {
+        Serial.println("pump-OFF 1");
+        analogWrite(pumpSpeed, 0);
+        Serial.println(minutes);
+      }
     }
   }
   else
@@ -242,23 +242,25 @@ void updateTime()
   monthFloat = ((timesec) / 86400);
 
 
-  for (int i = 0; i < 32; i++) {
+  for (int i = 0; i < 100; i++) {
     if (monthFloat > i) {
-      monthDay = i;
+      monthDay = i+1;
+      Serial.println(monthDay);
     }
   }
-
   if (monthDay >= 31 && monthDay <= 59)
   {
     months = 2;
-    monthDayRound = llround(monthDay) - 30;
+    monthDayRound = monthDay - 30;
   }
   else if (monthDay >= 59 && monthDay <= 90)
   {
     months = 3;
-    monthDayRound = llround(monthDay) - 58;
+    monthDayRound = monthDay - 58;
   }
 }
+
+
 
 void getTempHum()
 {
