@@ -36,7 +36,7 @@ String otherNodeID = "Node1"; // This is other node ID to control
 // setting up time and timezone
 
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200, 60000);
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
 
 // define time variables
 String Time;
@@ -241,7 +241,7 @@ void updateTime()
 
   minutes = timeClient.getMinutes();
   seconds = timeClient.getSeconds();
-  hours = timeClient.getHours() - 1;
+  hours = timeClient.getHours();
   timeEpoche = timeClient.getEpochTime();
   timesec = timeEpoche - 1672517078;
   monthFloat = ((timesec) / 86400);
@@ -258,6 +258,7 @@ void updateTime()
   {
     months = 2;
     monthDayRound = monthDay - 30;
+    Serial.println(monthDayRound);
   }
   else if (monthDay >= 59 && monthDay <= 90)
   {
