@@ -243,7 +243,7 @@ void updateTime()
   seconds = timeClient.getSeconds();
   hours = timeClient.getHours();
   timeEpoche = timeClient.getEpochTime();
-  timesec = timeEpoche - 1672517078;
+  timesec = timeEpoche - 1672527600;
   monthFloat = ((timesec) / 86400);
 
   for (int i = 0; i < 100; i++)
