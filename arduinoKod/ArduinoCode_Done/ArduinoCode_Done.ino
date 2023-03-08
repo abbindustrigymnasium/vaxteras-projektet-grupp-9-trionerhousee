@@ -135,7 +135,7 @@ void checkAll()
     Serial.println("hello");
     if (oken == true)
     {
-      if (hours == 15 && minutes == 1)
+      if (hours == 13 && minutes == 18)
       {
         Serial.println("pump-ON-Oken");
         digitalWrite(pumpDir, HIGH);
