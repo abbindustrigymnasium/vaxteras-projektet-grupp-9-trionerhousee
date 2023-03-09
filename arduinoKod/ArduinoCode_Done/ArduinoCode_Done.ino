@@ -12,7 +12,6 @@ Servo bigHatchServo;
 Servo fanHatchServo;
 
 // defines where we should conect to firebase via the webb with the wifi name and pasword
-
 #define FIREBASE_HOST "https://waxteras-default-rtdb.europe-west1.firebasedatabase.app"
 #define FIREBASE_AUTH "AIzaSyBslwY7gKcIWTltrOcEeDooZWzSRRcSBUg"
 #define WIFI_SSID "ABBgym_2.4"
