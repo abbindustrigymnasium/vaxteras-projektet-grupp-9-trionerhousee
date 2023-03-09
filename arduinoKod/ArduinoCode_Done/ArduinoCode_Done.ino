@@ -173,10 +173,10 @@ void checkAll()
     {
       if (minutes == 0 || minutes == 5 || minutes == 10 || minutes == 15 || minutes == 20 || minutes == 25 || minutes == 30 || minutes == 35 || minutes == 40 || minutes == 45 || minutes == 50 || minutes == 55)
       {
+        digitalWrite(pumpDir, HIGH);
         analogWrite(pumpSpeed, 1023);
         Serial.println(minutes);
         Serial.println("pump-ON-Regnskog");
-        delay(4000);
       }
       else
       {
