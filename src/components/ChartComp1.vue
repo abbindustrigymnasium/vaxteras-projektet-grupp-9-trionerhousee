@@ -59,12 +59,12 @@ let fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value +
 
 
 const chartData = ref({
-  labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+  labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"],
   datasets: [
     {
       label: 'Luftfuktighet',
       backgroundColor: '#f87979',
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     }
   ]
 })
@@ -271,12 +271,12 @@ function kalleUpdate () {
   console.log(hour)
 
   const kalle = ref({
-    labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+    labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"],
     datasets: [
       {
         label: 'Luftfuktighet',
         backgroundColor: '#f87979',
-        data: [hour[0], hour[1], hour[2], hour[3], hour[4], hour[5], hour[6], hour[7], hour[8], hour[9], hour[10], hour[11], hour[12], hour[13], hour[14], hour[15], hour[16], hour[17], hour[18], hour[19], hour[20], hour[21], hour[22]]
+        data: [hour[0], hour[1], hour[2], hour[3], hour[4], hour[5], hour[6], hour[7], hour[8], hour[9], hour[10], hour[11], hour[12], hour[13], hour[14], hour[15], hour[16], hour[17], hour[18], hour[19], hour[20], hour[21]]
       }
     ]
   })

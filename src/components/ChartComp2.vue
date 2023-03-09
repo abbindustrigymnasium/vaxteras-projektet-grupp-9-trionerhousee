@@ -40,7 +40,7 @@ const year = ref(date._value.slice(0, 4))
 const month = ref(date._value.slice(5, 7))
 const day = ref(date._value.slice(8, 10))
 
-const hour = []
+const hourT = []
 
 if (day.value < 10) {
   day.value = ref(day._value.slice(1, 2))
@@ -59,12 +59,12 @@ let fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value +
 
 
 const chartData = ref({
-  labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+  labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"],
   datasets: [
     {
       label: 'Temperatur',
       backgroundColor: '#f87979',
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     }
   ]
 })
@@ -79,202 +79,202 @@ const chartOptions = ref({
 function kalleUpdate () {
 
   for (let i = 0; i < 24; i++) {
-    hour.pop()
-    console.log(hour)
+    hourT.pop()
+    console.log(hourT)
   }
 
   //const fireTest = useDatabaseObject(dbref(db, 'TempHum/Month' + month.value.value + '/days' + day.value.value))
   if (fireTest._rawValue.Hour1 == null) {
-    hour.push(1)
+    hourT.push(1)
   }
   else {
-    hour.push(fireTest._rawValue.Hour1.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour1.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour2 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
-    hour.push(fireTest._rawValue.Hour2.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour2.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour3 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour3.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour3.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour4 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour4.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour4.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour5 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour5.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour5.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour6 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour6.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour6.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour7 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour7.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour7.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour8 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour8.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour8.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour9 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour9.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour9.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour10 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour10.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour10.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour11 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour11.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour11.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour12 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour12.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour12.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour13 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour13.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour13.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour14 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour14.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour14.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour15 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour15.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour15.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour16 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour16.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour16.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour17 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour17.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour17.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour18 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour18.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour18.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour19 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour19.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour19.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour20 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour20.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour20.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour21 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour21.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour21.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour22 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour22.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour22.Minute1.temperature)
   }
   if (fireTest._rawValue.Hour23 == null) {
 
-    hour.push(1)
+    hourT.push(1)
   }
   else {
 
-    hour.push(fireTest._rawValue.Hour23.Minute1.temperature)
+    hourT.push(fireTest._rawValue.Hour23.Minute1.temperature)
   }
 
-  console.log(hour)
+  console.log(hourT)
 
   const kalle = ref({
-    labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+    labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"],
     datasets: [
       {
         label: 'Temperatur',
         backgroundColor: '#f87979',
-        data: [hour[0], hour[1], hour[2], hour[3], hour[4], hour[5], hour[6], hour[7], hour[8], hour[9], hour[10], hour[11], hour[12], hour[13], hour[14], hour[15], hour[16], hour[17], hour[18], hour[19], hour[20], hour[21], hour[22]]
+        data: [hourT[0], hourT[1], hourT[2], hourT[3], hourT[4], hourT[5], hourT[6], hourT[7], hourT[8], hourT[9], hourT[10], hourT[11], hourT[12], hourT[13], hourT[14], hourT[15], hourT[16], hourT[17], hourT[18], hourT[19], hourT[20], hourT[21]]
       }
     ]
   })
